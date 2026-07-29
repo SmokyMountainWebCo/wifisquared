@@ -154,11 +154,13 @@ h2{font-size:clamp(1.7rem,3.4vw,2.4rem);margin-bottom:14px}
 .nav-links a:hover{color:var(--white)}
 .nav-phone{color:var(--amber)!important;font-family:var(--display);font-weight:600}
 .nav-cta{padding:10px 18px;font-size:.85rem}
-.nav-toggle{display:none;background:none;border:0;color:#fff;font-size:1.6rem;cursor:pointer}
+/* 44x44 minimum tap target per the master revision brief (§34) — the glyph
+   itself is only ~23x31, so the button is sized rather than the icon */
+.nav-toggle{display:none;background:none;border:0;color:#fff;font-size:1.6rem;cursor:pointer;min-width:44px;min-height:44px;align-items:center;justify-content:center;padding:0}
 @media(max-width:860px){
   .nav-links{position:fixed;inset:70px 0 auto 0;background:var(--navy);flex-direction:column;padding:24px;gap:18px;transform:translateY(-130%);transition:transform .25s ease;border-bottom:1px solid rgba(255,255,255,.1)}
   .nav-links.open{transform:translateY(0)}
-  .nav-toggle{display:block}
+  .nav-toggle{display:inline-flex}
 }
 
 /* ---------- HERO ---------- */
@@ -232,7 +234,10 @@ h2{font-size:clamp(1.7rem,3.4vw,2.4rem);margin-bottom:14px}
 .biz-note h3{font-size:1rem;margin-bottom:6px}
 .biz-note p{font-size:.9rem;color:var(--ink)}
 .biz-note a{color:var(--sky);font-weight:600}
-.plan-disclaimer{margin-top:18px;font-size:.78rem;color:var(--mute)}
+/* Required $150 fee + speed-varies disclosure. Held at >=14px on mobile so it
+   reads as a disclosure, not fine print (brief §20, §34). */
+.plan-disclaimer{margin-top:18px;font-size:.85rem;color:var(--mute);line-height:1.6}
+@media(max-width:860px){.plan-disclaimer{font-size:.9rem}}
 @media(max-width:1080px){.plans{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:860px){.plans{grid-template-columns:1fr}.plan.featured{order:-1}}
 
@@ -366,10 +371,12 @@ footer{background:#071628;color:rgba(255,255,255,.7);padding:48px 0 28px;font-si
 }
 
 /* --- coverage map disclosure --- */
-.map-note{font-size:.78rem;color:var(--mute);margin-top:10px;line-height:1.5}
+/* Required map disclosure — same readability floor as .plan-disclaimer */
+.map-note{font-size:.85rem;color:var(--mute);margin-top:10px;line-height:1.5}
+@media(max-width:860px){.map-note{font-size:.9rem}}
 
 /* --- contact block --- */
-.c-note{font-size:.86rem;color:rgba(255,255,255,.72);margin-top:14px;max-width:440px;line-height:1.55}
+.c-note{font-size:.9rem;color:rgba(255,255,255,.72);margin-top:14px;max-width:440px;line-height:1.55}
 
 /* --- form status messages --- */
 .form-msg{display:none;border-radius:10px;padding:16px 18px;font-size:.92rem;line-height:1.5;margin-bottom:18px}
@@ -1317,6 +1324,12 @@ document.querySelectorAll('.plan-cta').forEach(btn=>{
   const form=$('avail-form'); if(!form)return;
   const ok=$('form-ok'), err=$('form-err'), submit=$('avail-submit');
   let sending=false;
+
+  // Hand validation to validate() below, which highlights the offending field,
+  // scrolls to it, and shows the error message. Set here rather than in the
+  // markup on purpose: with JS off the attribute is never added, so the
+  // required= attributes still guard the plain POST fallback.
+  form.setAttribute('novalidate','');
 
   function clearMsgs(){ ok.classList.remove('show'); err.classList.remove('show'); }
 
