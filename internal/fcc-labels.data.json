@@ -1,0 +1,75 @@
+{
+  "_README": [
+    "Single source of truth for the FCC Broadband Consumer Labels.",
+    "Run `node internal/build-fcc-labels.mjs` to regenerate BOTH the paste-ready",
+    "label markup and the machine-readable CSV from this file, so the two can",
+    "never disagree.",
+    "",
+    "Anything still null is genuinely unknown and must come from Jermaine.",
+    "Everything else was derived from documents Wifi Squared has already",
+    "published; the source is named in _derivedFrom so it can be re-checked.",
+    "",
+    "Re-verify the label format against 47 CFR Part 8 and the FCC's current",
+    "Broadband Consumer Label order before publishing. The rules have been",
+    "amended more than once and the data dictionary for the CSV may have moved."
+  ],
+
+  "provider": "Wifi Squared",
+  "supportPhoneDisplay": "(865) 366-4006",
+  "supportPhoneE164": "+18653664006",
+  "supportPhoneCsv": "865-366-4006",
+  "supportUrl": "https://wifisquared.com/",
+  "privacyUrl": "https://wifisquared.com/privacy.html",
+
+  "frn": null,
+  "_frn_note": "NEEDED. 10-digit FCC Registration Number from apps.fcc.gov/cores. The Unique Plan Identifier is 'F' + FRN + the plan code, so no label can be finalized without it.",
+
+  "networkManagementUrl": null,
+  "_networkManagement_note": "NEEDED. The label must link to an Open Internet / network management disclosure. A draft built from Wifi Squared's own Terms section 6 is at internal/network-management-DRAFT.html — publish it as network-management.html after Jermaine confirms it, then set this to https://wifisquared.com/network-management.html",
+
+  "shared": {
+    "introductoryRate": false,
+    "_introductoryRate_derivedFrom": "Master Revision Brief section 9: 'without annual contracts or temporary promotional pricing'",
+
+    "contractRequired": false,
+    "_contractRequired_derivedFrom": "Terms section 2, 'No Contracts — Service is month-to-month'",
+
+    "providerMonthlyFees": "None",
+    "_providerMonthlyFees_derivedFrom": "No recurring provider fee appears anywhere in Terms section 2; equipment is covered by the one-time fee",
+
+    "oneTimeFeeName": "Installation & Equipment Fee",
+    "oneTimeFeeAmount": "150.00",
+    "_oneTimeFee_derivedFrom": "Pricing section disclosure and Terms section 2; refundable if equipment is returned in working condition within 30 days of installation",
+
+    "earlyTerminationFee": "$0.00",
+    "_earlyTerminationFee_derivedFrom": "Terms section 4, 'You can cancel service anytime', with month-to-month billing and no contract. CONFIRM with Jermaine that no cancellation charge exists in practice.",
+
+    "governmentTaxes": "Varies by Location",
+    "_governmentTaxes_derivedFrom": "Pricing disclosure: 'Applicable sales tax is added to this fee and to any mesh Wi-Fi units purchased'",
+
+    "discountsBundles": "Annual pre-payment discount",
+    "discountsBundlesUrl": "https://wifisquared.com/terms.html",
+    "_discountsBundles_derivedFrom": "Terms section 2, 'Annual Plans — Annual pre-payments receive a discount.' This CONTRADICTS the earlier label draft, which assumed no discounts existed.",
+
+    "dataIncluded": "Unlimited",
+    "additionalDataCharge": "None",
+    "_data_derivedFrom": "Every plan card lists 'No data caps'; Mobile Connect lists 'Unlimited data'. Note Terms section 6 permits throttling for sustained excessive use — that is a network management practice, not an additional-data charge, and belongs in the network management disclosure."
+  },
+
+  "plans": [
+    { "name": "Essential Connect",    "code": "ESSCONN60",     "serviceType": "Fixed",  "monthlyPrice": "60.00",  "advertisedDownMbps": 18,  "typicalDownMbps": null, "typicalUpMbps": null, "typicalLatencyMs": null },
+    { "name": "Standard Connect",     "code": "STDCONN75",     "serviceType": "Fixed",  "monthlyPrice": "75.00",  "advertisedDownMbps": 50,  "typicalDownMbps": null, "typicalUpMbps": null, "typicalLatencyMs": null },
+    { "name": "Performance Connect",  "code": "PERFCONN97",    "serviceType": "Fixed",  "monthlyPrice": "97.00",  "advertisedDownMbps": 100, "typicalDownMbps": null, "typicalUpMbps": null, "typicalLatencyMs": null },
+    { "name": "Ultra Connect",        "code": "ULTRACONN107",  "serviceType": "Fixed",  "monthlyPrice": "107.00", "advertisedDownMbps": 500, "typicalDownMbps": null, "typicalUpMbps": null, "typicalLatencyMs": null },
+    { "name": "Fiber Connect",        "code": "FIBERCONN75",   "serviceType": "Fixed",  "monthlyPrice": "75.00",  "advertisedDownMbps": 500, "typicalDownMbps": null, "typicalUpMbps": null, "typicalLatencyMs": null },
+    { "name": "Mobile Connect",       "code": "MOBILECONN97",  "serviceType": "Mobile", "monthlyPrice": "97.00",  "advertisedDownMbps": 100, "typicalDownMbps": null, "typicalUpMbps": null, "typicalLatencyMs": null }
+  ],
+
+  "_typicalSpeeds_note": [
+    "NEEDED, per plan: typical download Mbps, typical upload Mbps, typical latency ms.",
+    "These are TYPICAL observed performance, not the 'up to' advertised rate, and the",
+    "advertised rate is carried above only so the two can be sanity-checked against",
+    "each other. Jermaine should pull them from real customer measurements during a",
+    "busy period, not from the plan's ceiling."
+  ]
+}

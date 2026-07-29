@@ -15,3 +15,9 @@
 /privacy-policy                       /privacy.html   301
 /terms-of-service-and-return-policy   /terms.html     301
 /terms-of-service                     /terms.html     301
+
+# internal/ holds working drafts — the FCC label data, the label generator,
+# and the unpublished network management disclosure. Netlify publishes every
+# file in the repo, so these are explicitly 404'd. An unreviewed policy draft
+# reachable by URL is a liability even when nothing links to it.
+/internal/*                           /404.html       404

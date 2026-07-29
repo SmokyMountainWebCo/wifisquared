@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Network Management &amp; Open Internet Disclosure | Wifi Squared</title>
+<meta name="description" content="How Wifi Squared manages its network, what affects your speeds, and how to reach us about a performance problem.">
+
+<!-- ============================================================
+  DRAFT — NOT PUBLISHED. Jermaine must confirm before this goes live.
+
+  WHY IT EXISTS: the FCC Broadband Consumer Label has to link to a
+  network management / Open Internet disclosure. Wifi Squared does not
+  have one. This is the second of the "2 pages that have to link from
+  the labels."
+
+  WHAT'S IN IT: nothing invented. Every statement below is assembled
+  from something Wifi Squared has already published:
+    - Terms section 6  -> the excessive-use throttling paragraph
+    - Terms section 7  -> outage credits and notification
+    - Terms section 8  -> "up to" speeds, no uptime guarantee
+    - Terms section 11 -> data collected and not sold
+    - Pricing section  -> no data caps, $150 one-time fee
+    - Plan cards       -> advertised "up to" speeds per plan
+    - FAQ              -> what makes speeds vary by address
+  Each section names its source in an HTML comment so it can be checked.
+
+  ⚠️ GAPS JERMAINE MUST FILL — marked TK below. These are operational
+  facts only he knows. Do not guess them; the FCC disclosure rules
+  expect this document to be accurate, and a wrong answer here is worse
+  than an incomplete one:
+    1. Is there a specific threshold at which throttling begins, or is
+       it case-by-case? If there is a number, state it.
+    2. When throttling is applied, what is the reduced speed and how
+       long does it last?
+    3. Is any traffic prioritized or deprioritized by type (video,
+       gaming, VPN, P2P)? The honest answer is probably "no" — confirm.
+    4. Are business customers prioritized over residential during
+       congestion? Terms section 1 says business plans get "priority
+       support and repairs" — confirm whether that is support response
+       only, or also network priority. These are very different claims.
+    5. Confirm no blocking of lawful content and no paid prioritization.
+    6. Mobile Connect rides a carrier's network — that carrier may
+       deprioritize during congestion independently of Wifi Squared.
+       Name the practice if it applies.
+
+  Once confirmed: rename to network-management.html, remove this
+  comment and the noindex tag, add it to the footer, and set
+  networkManagementUrl in internal/fcc-labels.data.json.
+============================================================ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{--navy:#0A1F3C;--sky:#2E7CF6;--sky-soft:#EAF2FE;--amber:#F6A82C;--ink:#182234;--mute:#5B6B84;--line:#DCE5F2;--white:#FFFFFF;--radius:14px;--display:'Space Grotesk',sans-serif;--body:'Inter',sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--body);color:var(--ink);background:var(--white);line-height:1.7;font-size:16.5px}
+a{color:var(--sky);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:760px;margin:0 auto;padding:0 22px}
+.nav{position:sticky;top:0;z-index:50;background:rgba(10,31,60,.92);backdrop-filter:blur(10px)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:70px;max-width:1140px;margin:0 auto;padding:0 22px}
+.logo{font-family:var(--display);font-weight:700;font-size:1.35rem;color:var(--white)}
+.sq{color:var(--amber);font-size:1rem;vertical-align:super}
+.nav a.back{color:rgba(255,255,255,.85);font-size:.92rem;font-weight:500}
+article{padding:64px 0 40px}
+.crumb{font-size:.85rem;color:var(--mute);margin-bottom:22px}
+.crumb a{color:var(--mute)}
+h1{font-family:var(--display);font-size:clamp(1.8rem,4vw,2.5rem);line-height:1.15;margin-bottom:14px}
+.meta{font-size:.85rem;color:var(--mute);margin-bottom:36px;padding-bottom:22px;border-bottom:1px solid var(--line)}
+h2{font-family:var(--display);font-size:1.4rem;margin:38px 0 12px}
+p{margin-bottom:18px}
+ul{margin:0 0 18px 22px}
+li{margin-bottom:8px}
+.draft{background:#FFF6E3;border:1.5px solid var(--amber);border-radius:var(--radius);padding:18px 22px;margin-bottom:30px}
+.draft p:last-child{margin-bottom:0}
+.tk{background:#FFE58A;font-weight:600;padding:0 5px;border-radius:3px}
+footer{background:#071628;color:rgba(255,255,255,.6);padding:28px 0;font-size:.82rem;text-align:center}
+footer a{color:var(--amber)}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="logo" href="../index.html">Wifi<span class="sq">²</span></a>
+    <a class="back" href="../index.html">← Back to site</a>
+  </div>
+</nav>
+
+<article>
+  <div class="container">
+    <div class="crumb"><a href="../index.html">Home</a> / Network Management</div>
+    <h1>Network Management &amp; Open Internet Disclosure</h1>
+    <div class="meta">Wifi Squared, LLC · (865) 366-4006</div>
+
+    <div class="draft">
+      <p><b>Internal draft — not published.</b> Every highlighted <span class="tk">TK</span> below is an
+      operational fact only Wifi Squared can supply. Everything else is drawn from the company's
+      existing Terms of Service and published plan information.</p>
+    </div>
+
+    <p>This disclosure describes how Wifi Squared manages its network, what can affect the speeds you
+    actually see, and how to reach us when something is not performing the way it should. It is
+    provided so customers and prospective customers can make informed choices, and it is the document
+    referenced by the Network Management line on our FCC Broadband Facts labels.</p>
+
+    <!-- source: plan cards + FAQ "Why are different speeds available at different addresses?" -->
+    <h2>The speeds we advertise</h2>
+    <p>Every plan is sold at an <b>“up to”</b> speed, not a guaranteed speed. Our fixed wireless plans are
+    offered at up to 18, 50, 100, and 500 Mbps; Fiber Connect at up to 500 Mbps; and Mobile Connect at
+    up to 100 Mbps. The speed available at a given address depends on distance from the tower site,
+    line-of-sight, local tower capacity, the equipment installed, and conditions on the network at the
+    time. This is why we check each address before recommending a plan rather than selling a tier
+    sight-unseen.</p>
+
+    <!-- source: Terms section 8 -->
+    <p>We do not guarantee uninterrupted or error-free service, and the speed and uptime you experience
+    will vary with network conditions, device quality, and location.</p>
+
+    <!-- source: pricing section + plan cards -->
+    <h2>Data allowances</h2>
+    <p>Our fixed wireless and fiber plans have no data caps. Mobile Connect includes unlimited data.
+    We do not charge overage fees for additional data usage on any plan.</p>
+
+    <!-- source: Terms section 6, "Excessive or abusive bandwidth use... may lead to speed
+         throttling or cancellation at our discretion." -->
+    <h2>Congestion and excessive use</h2>
+    <p>Wifi Squared serves customers from shared tower sites with finite capacity. Sustained excessive
+    use by one account — for example, continuously consuming all available upload or download
+    bandwidth — can degrade service for neighbors on the same tower. Where that happens, we may reduce
+    the speed available to that account, and in persistent cases we may cancel the service.</p>
+    <p><span class="tk">TK — state the threshold, if there is one, or say plainly that this is assessed
+    case-by-case rather than at a fixed number.</span></p>
+    <p><span class="tk">TK — state what the reduced speed is and how long the reduction lasts.</span></p>
+
+    <h2>How we treat different kinds of traffic</h2>
+    <p><span class="tk">TK — confirm that Wifi Squared does not block, throttle, or prioritize traffic
+    based on its type, source, or destination, and does not accept payment from anyone to prioritize
+    their traffic. If any exception exists, describe it here.</span></p>
+    <!-- source: Terms section 1 says business plans include "priority support and repairs" -->
+    <p><span class="tk">TK — business plans are described as receiving priority support and repairs.
+    Clarify whether that means faster support response only, or also priority on the network during
+    congestion. These are different claims and the label disclosure needs the accurate one.</span></p>
+    <!-- Mobile Connect rides a third-party carrier -->
+    <p><span class="tk">TK — Mobile Connect is delivered over a cellular carrier's network. Describe any
+    deprioritization that carrier applies during congestion, since it affects the service regardless of
+    what Wifi Squared does.</span></p>
+
+    <!-- source: Terms section 6, illegal activity -->
+    <h2>Lawful use</h2>
+    <p>Our Terms of Service prohibit using the service for illegal activity, including child
+    exploitation material and illegal file sharing, and we cooperate with law enforcement when
+    required. Restrictions on unlawful activity are not a form of traffic discrimination.</p>
+
+    <!-- source: Terms section 7 -->
+    <h2>Outages</h2>
+    <p>If an outage lasts more than 24 hours, we may issue a credit for the downtime. For shorter
+    outages of an hour or more, we do our best to notify affected customers. If you believe an outage
+    qualifies for a credit, contact us and we will review it.</p>
+
+    <!-- source: Terms section 11 + privacy.html -->
+    <h2>Your information</h2>
+    <p>We collect only the data needed to provide and maintain your service, such as name, address,
+    contact details, network diagnostics, and billing information. We do not sell or share your
+    personal information, mobile number, or usage data with third parties except where required by law
+    or necessary to provide service. Full detail is in our
+    <a href="../privacy.html">Privacy Policy</a>.</p>
+
+    <h2>Questions or a performance problem</h2>
+    <p>Call or text our local team at <a href="tel:+18653664006">(865) 366-4006</a>, or email
+    <a href="mailto:tickets@wifisquared.com">tickets@wifisquared.com</a>. Many issues can be resolved
+    remotely, and when an onsite visit is needed we will schedule a technician.</p>
+
+    <p style="color:var(--mute);font-size:.9rem">Wifi Squared, LLC · 713 Winfield Dunn Parkway Suite 2
+    #1054, Sevierville, TN 37876 · <span class="tk">TK — effective date</span></p>
+  </div>
+</article>
+
+<footer>
+  <div class="container">© 2026 Wifi Squared, LLC · Internal draft — not published</div>
+</footer>
+
+</body>
+</html>
