@@ -1176,9 +1176,11 @@ footer{background:#071628;color:rgba(255,255,255,.7);padding:48px 0 28px;font-si
         <a href="tel:+18653664006">Call or text: (865) 366-4006</a>
         <a href="mailto:connect@wifisquared.com">Email: connect@wifisquared.com</a>
         <!-- [12] NEWSLETTER: opens the MailerLite pop-up form (ID BFZAK8).
-             The window.ml guard keeps the click harmless if the MailerLite
-             script is blocked or hasn't loaded. -->
-        <a class="ml-onclick-form" href="javascript:void(0)" onclick="if(window.ml)ml('show','BFZAK8',true);return false">Get email updates</a>
+             The form ID lives in data-ml-form and is bound by the MailerLite
+             block at the bottom of this file — NOT an inline onclick, because
+             Netlify's HTML post-processing re-serializes attributes and would
+             have to escape the quotes inside a JS handler. -->
+        <a class="ml-onclick-form" href="javascript:void(0)" data-ml-form="BFZAK8">Get email updates</a>
       </div>
     </div>
     <div class="foot-bottom">
@@ -1429,5 +1431,17 @@ n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
 ml('account', '2535272');
 </script>
 <!-- End MailerLite Universal -->
+<script>
+/* Manual pop-up trigger. Delegated so it also covers links added later, and
+   guarded so a blocked MailerLite script leaves the click as a harmless no-op
+   rather than a console error. The Universal snippet above defines window.ml
+   synchronously and queues calls, so this works before universal.js lands. */
+document.addEventListener('click',function(e){
+  const t=e.target.closest('[data-ml-form]');
+  if(!t)return;
+  e.preventDefault();
+  if(window.ml)ml('show',t.dataset.mlForm,true);
+});
+</script>
 </body>
 </html>

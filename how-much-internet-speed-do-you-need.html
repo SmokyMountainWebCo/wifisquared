@@ -122,7 +122,7 @@ footer a{color:var(--amber)}
 </div>
 
 <footer>
-  <div class="container">© 2026 Wifi Squared · <a href="index.html">wifisquared.net</a> · <a class="ml-onclick-form" href="javascript:void(0)" onclick="if(window.ml)ml('show','BFZAK8',true);return false">Get email updates</a> · Site by <a href="https://smokymountainwebco.com">Smoky Mountain Web Co.</a></div>
+  <div class="container">© 2026 Wifi Squared · <a href="index.html">wifisquared.net</a> · <a class="ml-onclick-form" href="javascript:void(0)" data-ml-form="BFZAK8">Get email updates</a> · Site by <a href="https://smokymountainwebco.com">Smoky Mountain Web Co.</a></div>
 </footer>
 
 <!-- [12] E-NEWSLETTER — MailerLite Universal (account 2535272).
@@ -137,5 +137,16 @@ n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
 ml('account', '2535272');
 </script>
 <!-- End MailerLite Universal -->
+<script>
+/* Manual pop-up trigger — see the matching block in index.html. Bound here
+   instead of via inline onclick so Netlify's HTML post-processing can't mangle
+   the quoting inside a handler attribute. */
+document.addEventListener('click',function(e){
+  const t=e.target.closest('[data-ml-form]');
+  if(!t)return;
+  e.preventDefault();
+  if(window.ml)ml('show',t.dataset.mlForm,true);
+});
+</script>
 </body>
 </html>
