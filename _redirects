@@ -20,4 +20,8 @@
 # and the unpublished network management disclosure. Netlify publishes every
 # file in the repo, so these are explicitly 404'd. An unreviewed policy draft
 # reachable by URL is a liability even when nothing links to it.
-/internal/*                           /404.html       404
+#
+# The trailing ! is load-bearing. Without it an existing file shadows the rule
+# and Netlify serves the file instead of the redirect — verified: these paths
+# returned 200 until the force flag was added.
+/internal/*                           /404.html       404!
