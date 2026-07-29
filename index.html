@@ -26,6 +26,16 @@
                             labels were already available has been removed. Do
                             not ship placeholder/dead label links. Re-check the
                             current FCC display rule when the labels are built.
+                            Two label fields are partly answered by terms.html
+                            (ported 20260729), and both contradict what the
+                            label draft assumes:
+                              - "Discounts & Bundles": terms §2 says annual
+                                pre-payments DO receive a discount.
+                              - "Network Management": terms §6 reserves the
+                                right to throttle excessive bandwidth use —
+                                that belongs in the Open Internet disclosure
+                                the label has to link to.
+                            Still blocked on the FRN and typical speeds.
     [5] Testimonials      — real Google reviews. Desktop shows .rev-full,
                             mobile shows the shorter approved .rev-short excerpt.
                             Excerpts are verbatim subsets — do not reword.
@@ -56,10 +66,24 @@
                             base64 PNG in the footer (transparent bg, sized for
                             retina at 150px display width). Confirm Jermaine's
                             Chamber membership permits logo use before launch.
-    [11] Legal pages      — privacy.html + terms.html ship alongside this file,
-                            linked in the footer. Content pulled from Jermaine's
-                            live WP site Jul 2026 — have him confirm the
-                            WP-specific privacy sections flagged inside.
+    [11] Legal pages      — privacy.html + terms.html now exist and are linked
+                            in the footer. Ported verbatim 20260729 from the
+                            live WP site (wifisquared.com/privacy-policy/ and
+                            /terms-of-service-and-return-policy/). _redirects
+                            301s those old paths to the new files for after the
+                            DNS cutover. STILL NEEDS JERMAINE:
+                              - privacy.html is WordPress's stock policy. The
+                                WP-specific sections (comments, Gravatar, login
+                                cookies, Shield Security, registered users) are
+                                each flagged in an HTML comment — they describe
+                                things this static site does not have.
+                              - It also omits Formspree and MailerLite, which
+                                DO process customer data here.
+                              - Google Analytics is named in the policy but is
+                                not installed on this site.
+                            Full list is in the comment block at the top of
+                            privacy.html. Do not rewrite legal copy without
+                            his sign-off.
     [12] E-newsletter     — MailerLite Universal (account 2535272) loads at the
                             bottom of this file and of every blog post. The
                             pop-up is built and triggered inside MailerLite;
