@@ -1437,7 +1437,7 @@ ml('account', '2535272');
    rather than a console error. The Universal snippet above defines window.ml
    synchronously and queues calls, so this works before universal.js lands. */
 document.addEventListener('click',function(e){
-  const t=e.target.closest('[data-ml-form]');
+  const t=e.target&&e.target.closest&&e.target.closest('[data-ml-form]');
   if(!t)return;
   e.preventDefault();
   if(window.ml)ml('show',t.dataset.mlForm,true);
