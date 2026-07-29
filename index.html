@@ -60,6 +60,15 @@
                             linked in the footer. Content pulled from Jermaine's
                             live WP site Jul 2026 — have him confirm the
                             WP-specific privacy sections flagged inside.
+    [12] E-newsletter     — MailerLite Universal (account 2535272) loads at the
+                            bottom of this file and of every blog post. The
+                            pop-up is built and triggered inside MailerLite;
+                            footer links with class "ml-onclick-form" open form
+                            BFZAK8 on demand. TEST BEFORE LAUNCH: pop-up fires,
+                            footer link opens it, a test signup lands in the
+                            MailerLite list. If Jermaine wants an inline
+                            embedded form instead of/alongside the pop-up, ask
+                            him for the embed snippet — it is a separate block.
 ============================================================ -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1166,6 +1175,10 @@ footer{background:#071628;color:rgba(255,255,255,.7);padding:48px 0 28px;font-si
         <h4>Contact</h4>
         <a href="tel:+18653664006">Call or text: (865) 366-4006</a>
         <a href="mailto:connect@wifisquared.com">Email: connect@wifisquared.com</a>
+        <!-- [12] NEWSLETTER: opens the MailerLite pop-up form (ID BFZAK8).
+             The window.ml guard keeps the click harmless if the MailerLite
+             script is blocked or hasn't loaded. -->
+        <a class="ml-onclick-form" href="javascript:void(0)" onclick="if(window.ml)ml('show','BFZAK8',true);return false">Get email updates</a>
       </div>
     </div>
     <div class="foot-bottom">
@@ -1396,5 +1409,25 @@ document.querySelectorAll('.plan-cta').forEach(btn=>{
   requestAnimationFrame(tick);
 })();
 </script>
+
+<!-- ============================================================
+  [12] E-NEWSLETTER — MailerLite Universal (account 2535272)
+  Snippet supplied by Jermaine 20260729. Loads async at the end of
+  <body> so it never blocks paint. The pop-up itself is configured
+  inside MailerLite (trigger, delay, styling) — nothing here to
+  tune. Form ID BFZAK8 is the manual trigger used by the
+  .ml-onclick-form links in the footer / blog footers.
+  This same block is repeated at the bottom of every blog post so
+  the pop-up and the manual link work site-wide.
+============================================================ -->
+<!-- MailerLite Universal -->
+<script>
+(function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+.push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+ml('account', '2535272');
+</script>
+<!-- End MailerLite Universal -->
 </body>
 </html>

@@ -114,8 +114,20 @@ footer a{color:var(--amber)}
 </div>
 
 <footer>
-  <div class="container">© 2026 Wifi Squared · <a href="index.html">wifisquared.net</a> · Site by <a href="https://smokymountainwebco.com">Smoky Mountain Web Co.</a></div>
+  <div class="container">© 2026 Wifi Squared · <a href="index.html">wifisquared.net</a> · <a class="ml-onclick-form" href="javascript:void(0)" onclick="if(window.ml)ml('show','BFZAK8',true);return false">Get email updates</a> · Site by <a href="https://smokymountainwebco.com">Smoky Mountain Web Co.</a></div>
 </footer>
 
+<!-- [12] E-NEWSLETTER — MailerLite Universal (account 2535272).
+     Mirrors the block at the bottom of index.html so the pop-up and the
+     "Get email updates" footer link work on blog posts too. -->
+<!-- MailerLite Universal -->
+<script>
+(function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+.push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+ml('account', '2535272');
+</script>
+<!-- End MailerLite Universal -->
 </body>
 </html>
