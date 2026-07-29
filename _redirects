@@ -1,0 +1,17 @@
+# ============================================================
+# Netlify redirects — https://docs.netlify.com/routing/redirects/
+#
+# Legacy WordPress URLs. The old WP Engine site served the legal
+# pages at these paths; index.html links to /privacy.html and
+# /terms.html. These 301s keep the old links (and their search
+# ranking) working once wifisquared.com is pointed at Netlify.
+#
+# Verified live on the WP site 20260729:
+#   /privacy-policy/                        -> the privacy policy
+#   /terms-of-service/                      -> 301s to the line below
+#   /terms-of-service-and-return-policy/    -> the terms page
+# ============================================================
+
+/privacy-policy                       /privacy.html   301
+/terms-of-service-and-return-policy   /terms.html     301
+/terms-of-service                     /terms.html     301
