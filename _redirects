@@ -2,26 +2,32 @@
 # Netlify redirects — https://docs.netlify.com/routing/redirects/
 #
 # Legacy WordPress URLs. The old WP Engine site served the legal
-# pages at these paths; index.html links to /privacy.html and
-# /terms.html. These 301s keep the old links (and their search
-# ranking) working once wifisquared.com is pointed at Netlify.
+# pages at these paths; these 301s keep the old links (and their
+# search ranking) working now that wifisquared.com is on Netlify.
 #
 # Verified live on the WP site 20260729:
 #   /privacy-policy/                        -> the privacy policy
 #   /terms-of-service/                      -> 301s to the line below
 #   /terms-of-service-and-return-policy/    -> the terms page
+#
+# Targets are the extensionless URLs, not privacy.html/terms.html.
+# Netlify serves both forms 200 (verified 20260731), and the site's
+# own footers link to the extensionless pair — so pointing the 301s
+# there lands the old links on the same URL everything else cites
+# instead of splitting the ranking across two spellings.
 # ============================================================
 
-/privacy-policy                       /privacy.html   301
-/terms-of-service-and-return-policy   /terms.html     301
-/terms-of-service                     /terms.html     301
+/privacy-policy                       /privacy   301
+/terms-of-service-and-return-policy   /terms     301
+/terms-of-service                     /terms     301
 
 # internal/ holds working drafts — the FCC label data, the label generator,
-# and the unpublished network management disclosure. Netlify publishes every
-# file in the repo, so these are explicitly 404'd. An unreviewed policy draft
+# and the superseded network management disclosure. It is excluded from the
+# deploy bundle rather than published and blocked, so this rule is a backstop
+# for the day someone deploys the repo root as-is. An unreviewed policy draft
 # reachable by URL is a liability even when nothing links to it.
 #
 # The trailing ! is load-bearing. Without it an existing file shadows the rule
 # and Netlify serves the file instead of the redirect — verified: these paths
 # returned 200 until the force flag was added.
-/internal/*                           /404.html       404!
+/internal/*                           /404.html  404!

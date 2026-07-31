@@ -1,0 +1,11 @@
+# ============================================================
+# Netlify headers — https://docs.netlify.com/routing/headers/
+# ============================================================
+
+# Netlify serves .webmanifest as application/octet-stream (verified on the
+# live deploy 20260731). Chrome parses the manifest anyway — checked against
+# that exact content type over CDP, no errors, all four icons read — so this
+# is spec hygiene rather than a fix for a broken thing. Kept because auditing
+# tools flag the wrong type and the correct one costs nothing.
+/site.webmanifest
+  Content-Type: application/manifest+json
