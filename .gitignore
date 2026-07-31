@@ -1,0 +1,2 @@
+# Netlify CLI state — links this checkout to the site, not source.
+.netlify/
