@@ -42,9 +42,31 @@
                             SWAP the "Read more customer reviews" href for the
                             direct Google Business review URL (currently a Maps
                             search link so nothing ships dead).
-    [6] Photos            — each <img> has data-swap note. Jermaine said he'll
-                            pull from Pixabay/Unsplash — just replace the src.
-                            If any URL 404s it auto-falls back to a gradient.
+    [6] Photos            — each <img> has a swap note above it. If a src fails
+                            it auto-falls back to a gradient, so nothing ships
+                            broken.
+                            20260731: the Business Internet and Professional
+                            Installation cards now use Jermaine's own photos,
+                            self-hosted in images/ instead of hotlinked. The
+                            hero and the Home Internet card are still Unsplash
+                            hotlinks.
+                            OUTSTANDING on the two new photos:
+                              - images/business-internet-food-park.jpg and
+                                images/wears-valley-fall-fest.jpg came in at
+                                474px wide (web thumbnails Jermaine found
+                                on-line, not originals). They render acceptably
+                                in the 190px card band but are below retina
+                                sharpness and cannot be reused any larger.
+                                Ask the venues for the originals.
+                              - Both are third-party photos of venues we serve,
+                                not Wifi Squared's own work. Get written
+                                permission from the food park and the Wears
+                                Valley Fall Fest organizers before launch, or
+                                replace them with photos our crew takes.
+                              - The tower photo is full resolution (1672px
+                                source) and is not an East Tennessee ridge —
+                                fine as a generic install shot, but a real
+                                local tower would be stronger.
     [7] Form              — wire the Formspree ID at "EDIT FORMSPREE".
                             Submits via fetch so the customer stays on the page
                             and always sees the success or error message.
@@ -664,8 +686,11 @@ footer{background:#071628;color:rgba(255,255,255,.7);padding:48px 0 28px;font-si
       </div>
       <div class="card reveal" id="business-internet">
         <div class="card-img">
-          <!-- [6] SWAP PHOTO: small business / storefront -->
-          <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=800&q=70" alt="Small business point of sale" onerror="this.remove()">
+          <!-- [6] Jermaine's photo 20260731: the food park in Wears Valley that
+               Wifi Squared provides internet for. Alternate he sent in the same
+               message is images/wears-valley-fall-fest.jpg — swap the src to use
+               it. Both are low-res web copies; see the images/ note in [6] above. -->
+          <img src="images/business-internet-food-park.jpg" alt="Outdoor food park with picnic tables and food trucks, a Wifi Squared business customer" onerror="this.remove()">
         </div>
         <div class="card-body">
           <h3>Business Internet</h3>
@@ -675,8 +700,11 @@ footer{background:#071628;color:rgba(255,255,255,.7);padding:48px 0 28px;font-si
       </div>
       <div class="card reveal">
         <div class="card-img">
-          <!-- [6] SWAP PHOTO: technician / antenna install -->
-          <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&q=70" alt="Technician performing installation" onerror="this.remove()">
+          <!-- [6] Jermaine's photo 20260731: one of the crew on a tower. He sent
+               two versions of this shot (overcast + a blue-sky edit); only the
+               overcast one came through at full resolution, so that is the one
+               shipped. -->
+          <img src="images/professional-installation-tower.jpg" alt="Wifi Squared technician climbing a communications tower" onerror="this.remove()">
         </div>
         <div class="card-body">
           <h3>Professional Installation</h3>
