@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Network Management Practices | Wifi Squared</title>
+<link rel="canonical" href="https://wifisquared.com/network-management-practices">
+<meta name="description" content="How Wifi Squared manages its fixed wireless, fiber, and mobile LTE networks — blocking, throttling, paid prioritization, congestion management, device rules, and security practices.">
+
+<!-- ============================================================
+  NETWORK MANAGEMENT PRACTICES — supplied by Jermaine 20260730 and
+  reproduced verbatim. Do not reword: this is the Open Internet
+  disclosure the FCC Broadband Facts labels link to.
+
+  URL IS LOAD-BEARING. Jermaine asked specifically for
+  https://wifisquared.com/network-management-practices — stable,
+  publicly reachable without a login, and NOT folded into the Terms
+  page. The filename produces that path once Netlify strips .html.
+  If this file is ever renamed, the FCC labels break; update
+  internal/fcc-labels.data.json at the same time.
+
+  This supersedes internal/network-management-DRAFT.html, which was
+  written before his version arrived and has been deleted. His
+  document answers every open question that draft flagged — most
+  importantly section 12: business and upgraded residential plans
+  get priority SUPPORT, not packet-level network priority.
+============================================================ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{--navy:#0A1F3C;--navy-2:#122B4F;--sky:#2E7CF6;--sky-soft:#EAF2FE;--amber:#F6A82C;--ink:#182234;--mute:#5B6B84;--line:#DCE5F2;--white:#FFFFFF;--radius:14px;--display:'Space Grotesk',sans-serif;--body:'Inter',sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--ink);background:var(--white);line-height:1.7;font-size:16.5px}
+a{color:var(--sky);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:760px;margin:0 auto;padding:0 22px}
+.nav{position:sticky;top:0;z-index:50;background:rgba(10,31,60,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:70px;max-width:1140px;margin:0 auto;padding:0 22px}
+.logo{font-family:var(--display);font-weight:700;font-size:1.35rem;color:var(--white)}
+.sq{color:var(--amber);font-weight:700;font-size:1rem;vertical-align:super}
+.nav a.back{color:rgba(255,255,255,.85);font-size:.92rem;font-weight:500}
+.nav a.back:hover{color:#fff}
+article{padding:64px 0 40px}
+.crumb{font-size:.85rem;color:var(--mute);margin-bottom:22px}
+.crumb a{color:var(--mute)}
+.crumb a:hover{color:var(--sky)}
+h1{font-family:var(--display);font-size:clamp(1.8rem,4vw,2.5rem);line-height:1.15;letter-spacing:-.01em;margin-bottom:14px}
+.meta{font-size:.85rem;color:var(--mute);margin-bottom:36px;padding-bottom:22px;border-bottom:1px solid var(--line)}
+h2{font-family:var(--display);font-size:1.4rem;margin:38px 0 12px}
+h3{font-family:var(--display);font-size:1.1rem;margin:28px 0 10px}
+p{margin-bottom:18px}
+ul{margin:0 0 18px 22px}
+li{margin-bottom:8px}
+.lede{background:var(--sky-soft);border:1px solid var(--line);border-radius:var(--radius);padding:20px 24px;margin-bottom:8px}
+.lede p:last-child{margin-bottom:0}
+.addr{background:var(--sky-soft);border:1px solid var(--line);border-radius:var(--radius);padding:20px 24px}
+.addr p:last-child{margin-bottom:0}
+footer{background:#071628;color:rgba(255,255,255,.6);padding:28px 0;font-size:.82rem;text-align:center}
+footer a{color:var(--amber)}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class='logo' href='/'>Wifi<span class="sq">²</span></a>
+    <a class='back' href='/'>← Back to site</a>
+  </div>
+</nav>
+
+<article>
+  <div class="container">
+    <div class="crumb"><a href='/'>Home</a> / Network Management Practices</div>
+    <h1>Network Management Practices</h1>
+    <div class="meta">Effective Date: July 28, 2026 · Last Updated: July 30, 2026</div>
+
+    <div class="lede">
+      <p>Wifi Squared, LLC provides this Network Management Practices disclosure to explain how we manage our broadband internet networks.</p>
+      <p>This policy applies to Wifi Squared fixed-wireless, fiber, and mobile LTE internet services, except where a particular practice is identified as applying only to a specific service type or network.</p>
+      <p>Wifi Squared seeks to operate its networks in a reasonable and nondiscriminatory manner while protecting customers, network infrastructure, and the reliability and security of our services.</p>
+    </div>
+
+    <h2>1. Blocking</h2>
+    <p>Wifi Squared does not block lawful internet content, applications, services, or non-harmful devices, subject to reasonable network management.</p>
+    <p>Wifi Squared may block or restrict traffic when reasonably necessary to:</p>
+    <ul>
+      <li>Protect customers or Wifi Squared systems from malware, denial-of-service attacks, network attacks, unauthorized access, spam, fraud, or other security threats;</li>
+      <li>Prevent or respond to activity that violates applicable law;</li>
+      <li>Comply with a valid legal requirement, court order, or governmental request;</li>
+      <li>Protect the integrity, availability, and reliability of our network;</li>
+      <li>Enforce our Terms of Service or Acceptable Use requirements;</li>
+      <li>Address intentional network abuse; or</li>
+      <li>Restrict or suspend service associated with a delinquent or unpaid account.</li>
+    </ul>
+    <p>When technically and operationally reasonable, Wifi Squared may first limit or restrict harmful or abusive traffic before blocking it entirely.</p>
+    <p>Wifi Squared does not block ordinary customer communications based on their viewpoints, subject matter, or the identity of the person or organization providing the content.</p>
+
+    <h3>Restrictions for Nonpayment</h3>
+    <p>When an account has an overdue balance of $150 or more, the account's internet service may be restricted to approximately 0.5 Mbps download and 0.5 Mbps upload until the restriction is removed.</p>
+    <p>An eligible customer may postpone the restriction for one 24-hour period by logging into the customer portal and selecting Postpone Suspension. This provides the customer with additional time to make a payment or contact Wifi Squared.</p>
+    <p>A Wifi Squared employee may also delay or override the restriction when an approved payment arrangement has been established.</p>
+    <p>If an account remains suspended or restricted for more than one month, internet access may be blocked until payment is received or an approved payment arrangement is established.</p>
+    <p>Restrictions imposed for nonpayment are account-management actions. They are not based on the content, source, destination, or type of internet traffic.</p>
+
+    <h2>2. Throttling</h2>
+    <p>Wifi Squared does not throttle lawful internet traffic based on the traffic's content, application, service, destination, source, or the identity of the content provider.</p>
+    <p>Wifi Squared may temporarily limit, restrict, or block traffic that appears to be associated with:</p>
+    <ul>
+      <li>A denial-of-service attack;</li>
+      <li>Malware or compromised equipment;</li>
+      <li>Unauthorized network access;</li>
+      <li>Intentional network abuse;</li>
+      <li>Illegal activity;</li>
+      <li>Excessive traffic generated by a security incident; or</li>
+      <li>Other activity that threatens customers, network equipment, or network availability.</li>
+    </ul>
+    <p>Any such action is intended to address harmful, illegal, or abusive activity. It is not intended to favor one lawful website, application, service, or content provider over another.</p>
+    <p>Wifi Squared also configures customer connections according to the maximum speeds included with each customer's selected service plan. These plan-based speed settings are part of delivering the subscribed service and are not application-specific throttling.</p>
+
+    <h2>3. Paid Prioritization</h2>
+    <p>Wifi Squared does not engage in paid prioritization.</p>
+    <p>Wifi Squared does not accept payment or other consideration from content providers, applications, websites, or online services in exchange for:</p>
+    <ul>
+      <li>Faster delivery of their internet traffic;</li>
+      <li>Preferential network treatment;</li>
+      <li>Dedicated priority lanes; or</li>
+      <li>Degrading or disadvantaging competing lawful traffic.</li>
+    </ul>
+    <p>Wifi Squared does not prioritize affiliated content or services in exchange for payment or other consideration.</p>
+
+    <h2>4. Affiliated and Sponsored Services</h2>
+    <p>Wifi Squared does not currently offer affiliated content, applications, or sponsored-data arrangements that receive preferential treatment over other lawful internet traffic.</p>
+    <p>This does not prevent Wifi Squared from providing separately contracted managed-network, private-network, voice, business, or enterprise services that are distinct from public broadband internet access, provided those services do not materially harm the capacity or performance of customers' broadband internet access service.</p>
+
+    <h2>5. Congestion Management</h2>
+    <p>Wifi Squared designs, monitors, and expands its network to provide reliable service to its customers. However, available network capacity is shared among customers using a particular tower, access point, sector, backhaul connection, upstream connection, or other network resource.</p>
+    <p>During periods of increased demand, customers may experience naturally reduced speeds, increased latency, or other temporary performance changes because of the available network throughput.</p>
+    <p>Wifi Squared does not currently impose a separate congestion-based throttling policy that intentionally reduces selected customers' speeds during busy periods. Customers may nevertheless experience lower performance when aggregate demand temporarily exceeds the capacity available within a particular portion of the network.</p>
+    <p>Wifi Squared does not manage congestion based on:</p>
+    <ul>
+      <li>The viewpoint or subject matter of lawful content;</li>
+      <li>The identity of a website, application, content provider, or customer;</li>
+      <li>The type of lawful application being used; or</li>
+      <li>A payment from an online content or application provider.</li>
+    </ul>
+    <p>Wifi Squared may address recurring congestion through reasonable operational measures, including:</p>
+    <ul>
+      <li>Monitoring network utilization and performance;</li>
+      <li>Adjusting network configurations;</li>
+      <li>Rebalancing customers or network traffic;</li>
+      <li>Upgrading access points, tower equipment, backhaul, or upstream capacity;</li>
+      <li>Repairing or replacing underperforming equipment; and</li>
+      <li>Contacting customers when customer equipment or unusual activity may be contributing to a performance problem.</li>
+    </ul>
+
+    <h3>Plan-Based Traffic Shaping</h3>
+    <p>Wifi Squared uses Preseem to shape individual fixed-wireless and Tarana customer connections according to the speed included with each customer's subscribed service plan.</p>
+    <p>For example, a customer subscribed to a plan offering a particular maximum download and upload speed may have the connection technically configured not to exceed those plan rates.</p>
+    <p>This plan-based traffic shaping:</p>
+    <ul>
+      <li>Applies according to the customer's subscribed plan;</li>
+      <li>Is not based on the content or application being accessed;</li>
+      <li>Does not favor particular websites, services, or content providers; and</li>
+      <li>Is separate from congestion-based network management.</li>
+    </ul>
+    <p>Business customers and customers with upgraded residential service do not receive packet-level or application-level priority over other customers.</p>
+
+    <h2>6. Application-Specific Behavior</h2>
+    <p>Wifi Squared does not intentionally block, throttle, impair, favor, or modify lawful traffic from particular applications or categories of applications.</p>
+    <p>This includes lawful use of:</p>
+    <ul>
+      <li>Streaming-video services;</li>
+      <li>Voice-over-IP services;</li>
+      <li>Online gaming;</li>
+      <li>Video conferencing;</li>
+      <li>Virtual private networks;</li>
+      <li>Peer-to-peer applications;</li>
+      <li>Cloud-storage services;</li>
+      <li>Social-media platforms;</li>
+      <li>Email services; and</li>
+      <li>Customer-operated servers.</li>
+    </ul>
+    <p>Wifi Squared may restrict a particular application, device, connection, or traffic pattern when it is reasonably believed to be generating malicious, illegal, harmful, or abusive traffic or creating a security threat.</p>
+    <p>Any such restriction is based on the harmful or abusive activity involved rather than ordinary lawful use of the application.</p>
+    <p>Wifi Squared may also use technical measures to prevent or mitigate:</p>
+    <ul>
+      <li>Spam;</li>
+      <li>Malware;</li>
+      <li>Denial-of-service attacks;</li>
+      <li>Unauthorized network access;</li>
+      <li>Fraudulent activity;</li>
+      <li>Compromised customer equipment; or</li>
+      <li>Other activity that threatens customers or network operations.</li>
+    </ul>
+
+    <h2>7. Device-Attachment Rules</h2>
+    <p>Customers may connect lawful, non-harmful devices to their Wifi Squared service, provided those devices:</p>
+    <ul>
+      <li>Are compatible with the service;</li>
+      <li>Do not damage or interfere with Wifi Squared's network or equipment;</li>
+      <li>Do not enable unauthorized access to the service;</li>
+      <li>Do not violate the customer's service agreement;</li>
+      <li>Do not create security vulnerabilities or harmful traffic; and</li>
+      <li>Are used at the authorized service location, except for services specifically sold as mobile services.</li>
+    </ul>
+    <p>Wifi Squared may require certain company-provided or company-approved equipment when necessary to deliver, authenticate, monitor, secure, troubleshoot, or support the service.</p>
+    <p>Company-owned outdoor radios, antennas, fiber equipment, optical-network terminals, LTE gateways, routers, power supplies, and other installed equipment may not be modified, relocated, replaced, resold, disconnected, or reconfigured without Wifi Squared's permission.</p>
+    <p>Customers may connect their own compatible router or internal networking equipment behind Wifi Squared's service equipment.</p>
+    <p>When technically supported, a Wifi Squared-managed router may also be bridged or bypassed so the customer can use compatible customer-owned routing equipment.</p>
+    <p>Customers using their own routers or networking equipment are responsible for:</p>
+    <ul>
+      <li>Configuring and securing that equipment;</li>
+      <li>Maintaining compatible hardware and software;</li>
+      <li>Troubleshooting their internal network;</li>
+      <li>Protecting their Wi-Fi passwords and connected devices; and</li>
+      <li>Ensuring the equipment does not interfere with Wifi Squared's network.</li>
+    </ul>
+    <p>Wifi Squared's ability to troubleshoot customer-owned equipment may be limited. Wifi Squared may require temporary reconnection of company-managed equipment when necessary to test or diagnose the service.</p>
+    <p>Wifi Squared may refuse or disconnect a device that harms the network, causes interference, creates a security risk, violates applicable law, or prevents the service from operating properly.</p>
+
+    <h2>8. Customer-Operated Servers, IP Addresses, and Port Access</h2>
+    <p>Customers may operate lawful public-facing servers and hosted services through their Wifi Squared connection, subject to:</p>
+    <ul>
+      <li>Applicable law;</li>
+      <li>Wifi Squared's Terms of Service;</li>
+      <li>The technical capabilities of the customer's service;</li>
+      <li>The customer's assigned IP-address configuration;</li>
+      <li>Reasonable security requirements; and</li>
+      <li>Restrictions against malicious, illegal, harmful, or abusive activity.</li>
+    </ul>
+    <p>Some Wifi Squared customers receive service through carrier-grade network address translation, commonly called CGNAT, while others may receive a publicly routable IPv4 address. The configuration used depends on the customer's location, network, service type, and available address resources.</p>
+    <p>CGNAT may prevent or limit unsolicited inbound internet connections, traditional port forwarding, and some forms of public server hosting.</p>
+    <p>Where technically available, up to one static IPv4 address may be assigned to a customer. Static IPv4 address availability is not guaranteed at every location or on every service type.</p>
+    <p>Customers who require additional public IPv4 addresses may purchase additional IPv4 address blocks for an additional monthly fee, subject to technical feasibility and address availability.</p>
+    <p>Permission to operate a server does not guarantee that every customer connection will technically support direct inbound access. Customers who require inbound connectivity, port forwarding, a static IPv4 address, or an additional IPv4 block should contact Wifi Squared to determine which options are available at their location.</p>
+    <p>Customers are responsible for properly configuring and securing any publicly accessible server, device, or service.</p>
+
+    <h2>9. Security Practices</h2>
+    <p>Wifi Squared uses reasonable network-management and security practices to protect customers and network infrastructure.</p>
+    <p>These practices may include:</p>
+    <ul>
+      <li>Monitoring network health, availability, signal quality, bandwidth consumption, and equipment status;</li>
+      <li>Detecting unusual traffic patterns, compromised devices, malware, spam, unauthorized access, and denial-of-service attacks;</li>
+      <li>Temporarily limiting or blocking traffic associated with an active security threat;</li>
+      <li>Updating or reconfiguring company-managed network equipment;</li>
+      <li>Restricting access to network-management systems;</li>
+      <li>Using firewalls, access controls, authentication, logging, and other security tools;</li>
+      <li>Contacting customers when their connection or equipment appears to present a security risk; and</li>
+      <li>Cooperating with law enforcement or other authorities when legally required.</li>
+    </ul>
+    <p>Wifi Squared monitors network metadata and operational statistics necessary to install, operate, maintain, secure, troubleshoot, and improve its services.</p>
+    <p>This information may include:</p>
+    <ul>
+      <li>Traffic volumes;</li>
+      <li>Bandwidth consumption;</li>
+      <li>Performance metrics;</li>
+      <li>Device connectivity;</li>
+      <li>Signal and connection quality;</li>
+      <li>Equipment status;</li>
+      <li>IP-address and routing information;</li>
+      <li>Network events; and</li>
+      <li>Overall network health.</li>
+    </ul>
+    <p>Wifi Squared does not use deep-packet inspection to examine the contents of ordinary customer communications.</p>
+    <p>This means Wifi Squared does not ordinarily inspect the substance of customer emails, messages, files, webpage content, calls, or other communications as part of its standard network-monitoring practices.</p>
+    <p>Additional information about personal information and data practices is available in the Wifi Squared Privacy Policy: <a href="https://wifisquared.com/privacy">https://wifisquared.com/privacy</a></p>
+    <p>Wifi Squared does not sell customers' personal information, mobile numbers, or internet-usage data.</p>
+
+    <h2>10. Network Performance</h2>
+    <p>Wifi Squared offers fixed-wireless, fiber, and mobile LTE broadband services. Actual performance may vary based on:</p>
+    <ul>
+      <li>The customer's subscribed service plan;</li>
+      <li>The technology used to provide service;</li>
+      <li>Network congestion and available capacity;</li>
+      <li>Available tower, sector, backhaul, or upstream capacity;</li>
+      <li>Signal strength and radio interference;</li>
+      <li>Weather and physical obstructions;</li>
+      <li>Customer location;</li>
+      <li>Customer-owned equipment;</li>
+      <li>Wi-Fi coverage and interference inside the premises;</li>
+      <li>The number of simultaneously connected devices;</li>
+      <li>The performance and location of the website, application, or remote server being accessed; and</li>
+      <li>Conditions outside Wifi Squared's control.</li>
+    </ul>
+    <p>Advertised speeds are maximum or "up to" speeds and are not guaranteed at all times.</p>
+    <p>Wifi Squared's plan-specific prices, speeds, data allowances, typical performance information, and other consumer disclosures are provided through its broadband consumer labels and service-plan materials.</p>
+
+    <h2>11. Data Allowances</h2>
+    <p>Wifi Squared does not currently impose a fixed monthly data cap on its:</p>
+    <ul>
+      <li>Fixed-wireless internet services;</li>
+      <li>Fiber internet services; or</li>
+      <li>Mobile LTE internet services.</li>
+    </ul>
+    <p>Customers are not charged usage-based overage fees by Wifi Squared for exceeding a monthly data allowance.</p>
+    <p>Although Wifi Squared services do not have fixed monthly data caps, malicious, illegal, fraudulent, harmful, or abusive activity may still be restricted under this policy and Wifi Squared's Terms of Service.</p>
+    <p>The absence of a monthly data cap does not guarantee that maximum advertised speeds will be available continuously. Actual performance remains subject to the customer's service plan, available network capacity, signal conditions, upstream networks, and other technical factors.</p>
+
+    <h2>12. Business Services and Priority Support</h2>
+    <p>Wifi Squared serves residential and business customers.</p>
+    <p>Business plans may include:</p>
+    <ul>
+      <li>Enhanced service commitments;</li>
+      <li>A stronger Service Level Agreement;</li>
+      <li>Priority customer support;</li>
+      <li>Priority troubleshooting;</li>
+      <li>Priority repair; and</li>
+      <li>Priority restoration scheduling.</li>
+    </ul>
+    <p>Certain upgraded residential plans may also include priority-support benefits.</p>
+    <p>Priority support, repair, or restoration treatment does not mean that the customer's ordinary public-internet traffic receives packet-level, application-level, or network-level priority over traffic from other customers.</p>
+    <p>Wifi Squared does not currently give business customers or upgraded residential customers technical network priority based solely on their account classification.</p>
+    <p>Any future service that includes technical traffic priority will be accurately disclosed in the applicable service agreement and in this Network Management Practices disclosure when required.</p>
+
+    <h2>13. Changes to These Practices</h2>
+    <p>Wifi Squared may update these Network Management Practices as its services, technology, security requirements, business practices, or legal obligations change.</p>
+    <p>Material changes will be posted on this page. The effective date and last-updated date shown at the top of the page identify the current version.</p>
+    <p>Customers should periodically review this page for updates.</p>
+
+    <h2>14. Questions and Complaints</h2>
+    <p>Questions or concerns regarding Wifi Squared's network-management practices may be submitted to:</p>
+    <div class="addr">
+      <p>Wifi Squared, LLC<br>
+      713 Winfield Dunn Parkway<br>
+      Suite 2 #1054<br>
+      Sevierville, TN 37876</p>
+      <p>General email: <a href="mailto:connect@wifisquared.com">connect@wifisquared.com</a><br>
+      Support email: <a href="mailto:tickets@wifisquared.com">tickets@wifisquared.com</a><br>
+      Phone or text: <a href="tel:+18653664006">865-366-4006</a><br>
+      Website: <a href="https://wifisquared.com">https://wifisquared.com</a></p>
+    </div>
+    <p style="margin-top:18px">Customers should include their name, service address, account information, and a description of the issue so Wifi Squared can investigate the matter.</p>
+  </div>
+</article>
+
+<footer>
+  <div class="container">© 2026 Wifi Squared, LLC · <a href='/'>wifisquared.com</a> · <a href="https://wifi2.unmsapp.com/crm/login" target="_blank" rel="noopener">Customer Login</a> ·
+    <a class="ml-onclick-form" href="javascript:void(0)" data-ml-form="BFZAK8">Get email updates</a> ·
+    <a href='/contact'>Contact Us</a> ·
+    <a href='/privacy'>Privacy</a> · <a href='/terms'>Terms</a> ·
+    Site by <a href="https://smokymountainwebco.com">Smoky Mountain Web Co.</a></div>
+</footer>
+
+<!-- [12] E-NEWSLETTER — MailerLite Universal (account 2535272). -->
+<!-- MailerLite Universal -->
+<script>
+(function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+.push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+ml('account', '2535272');
+</script>
+<!-- End MailerLite Universal -->
+<script>
+document.addEventListener('click',function(e){
+  const t=e.target&&e.target.closest&&e.target.closest('[data-ml-form]');
+  if(!t)return;
+  e.preventDefault();
+  if(window.ml)ml('show',t.dataset.mlForm,true);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mobile Connect Coverage | Wifi Squared</title>
+<meta name="description" content="How Wifi Squared Mobile Connect coverage works — carrier selection, service lines, equipment, and what is and isn't guaranteed.">
+<link rel="canonical" href="https://wifisquared.com/mobile-coverage">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0A1F3C; --navy-2:#122B4F; --sky:#2E7CF6; --sky-soft:#EAF2FE;
+  --amber:#F6A82C; --ink:#182234; --mute:#5B6B84; --line:#DCE5F2;
+  --white:#FFFFFF; --radius:14px; --shadow:0 10px 30px rgba(10,31,60,.10);
+  --display:'Space Grotesk',sans-serif; --body:'Inter',sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--body);color:var(--ink);background:var(--white);line-height:1.65;-webkit-font-smoothing:antialiased}
+.container{width:min(820px,92vw);margin-inline:auto}
+a{color:var(--sky)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+
+/* header */
+.nav{background:var(--navy);position:sticky;top:0;z-index:50}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;width:min(1120px,92vw);margin-inline:auto}
+.wordmark{font-family:var(--display);font-weight:700;font-size:1.35rem;color:#fff;letter-spacing:.5px;text-decoration:none}
+.wm2{color:var(--amber);font-size:.72em;vertical-align:super;font-weight:700}
+.nav-back{color:#CFE0FA;text-decoration:none;font-weight:500;font-size:.95rem}
+.nav-back:hover{color:#fff}
+.nav-phone{color:#fff;text-decoration:none;font-weight:600;white-space:nowrap}
+
+/* hero */
+.hero{background:linear-gradient(180deg,var(--navy) 0%,var(--navy-2) 100%);color:#fff;padding:56px 0 48px}
+.eyebrow{font-family:var(--display);text-transform:uppercase;letter-spacing:.14em;font-size:.78rem;color:var(--amber);font-weight:600;margin:0 0 10px}
+.hero h1{font-family:var(--display);font-size:clamp(1.9rem,4.6vw,2.8rem);line-height:1.15;margin:0 0 14px}
+.hero p{margin:0;color:#CFE0FA;font-size:1.06rem;max-width:62ch}
+
+/* body */
+main{padding:44px 0 24px}
+section{margin:0 0 38px}
+h2{font-family:var(--display);font-size:1.4rem;line-height:1.25;margin:0 0 12px;color:var(--navy)}
+h3{font-family:var(--display);font-size:1.06rem;margin:22px 0 6px;color:var(--navy)}
+p{margin:0 0 14px}
+ul{margin:0 0 14px;padding-left:1.15rem}
+li{margin:0 0 8px}
+.lede{font-size:1.08rem}
+
+.callout{background:var(--sky-soft);border:1px solid var(--line);border-left:5px solid var(--sky);border-radius:var(--radius);padding:20px 22px;margin:0 0 32px}
+.callout p:last-child{margin-bottom:0}
+
+.note{border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;background:#fff;box-shadow:var(--shadow)}
+.note p:last-child{margin-bottom:0}
+
+table{width:100%;border-collapse:collapse;margin:0 0 14px;font-size:.97rem}
+caption{text-align:left;color:var(--mute);font-size:.9rem;padding-bottom:8px}
+th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--display);color:var(--navy);background:var(--sky-soft)}
+.wrap{overflow-x:auto}
+
+.cta{background:var(--navy);color:#fff;border-radius:var(--radius);padding:28px 26px;margin:0 0 34px}
+.cta h2{color:#fff;margin-bottom:8px}
+.cta p{color:#CFE0FA}
+.btn{display:inline-block;background:var(--amber);color:var(--navy);font-family:var(--display);font-weight:700;
+     text-decoration:none;padding:13px 22px;border-radius:999px;margin:6px 8px 0 0}
+.btn:hover{filter:brightness(1.06)}
+.btn-ghost{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.55)}
+
+footer{background:var(--navy);color:#CFE0FA;padding:30px 0;margin-top:24px;font-size:.93rem}
+footer a{color:#fff}
+.foot-links{margin:10px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px 20px}
+.updated{color:var(--mute);font-size:.88rem}
+@media (max-width:560px){.nav-back{display:none}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-in">
+    <a class="wordmark" href="/">Wifi<span class="wm2">²</span></a>
+    <a class="nav-back" href="/#pricing">← All plans</a>
+    <a class="nav-phone" href="tel:+18653664006">(865)&nbsp;366-4006</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="container">
+    <p class="eyebrow">Mobile Connect</p>
+    <h1>Mobile Connect coverage</h1>
+    <p>What determines coverage, how carriers are selected, and what we can and can't promise before you activate.</p>
+  </div>
+</div>
+
+<main>
+  <div class="container">
+
+    <!-- Verbatim disclosure copy supplied in the FCC label package, §7.
+         Do not reword without a compliance check — the Mobile Connect
+         Broadband Facts label links here. -->
+    <section class="callout" id="coverage-disclosure">
+      <p class="lede">Mobile Connect coverage varies by carrier, location, terrain, building construction, network conditions, and compatible equipment. Wifi Squared evaluates the service location and normally selects one available carrier connection from Verizon, AT&amp;T, or T-Mobile. The selected carrier may be changed if coverage or service conditions require it. A second simultaneously active or failover connection is a separate Mobile Connect service line. Coverage and specific performance are not guaranteed at every location. Contact Wifi Squared for an address- and device-specific review before activation.</p>
+    </section>
+
+    <section>
+      <h2>How carrier selection works</h2>
+      <p>Mobile Connect runs on established cellular networks rather than on a Wifi Squared tower. Before activation we look at your specific service address and choose one available carrier connection from Verizon, AT&amp;T, or T-Mobile based on what actually performs there.</p>
+      <p>That choice is not permanent. If coverage or service conditions change, we may move your connection to a different carrier to keep the service working.</p>
+    </section>
+
+    <section>
+      <h2>Service lines and pricing</h2>
+      <p>Mobile Connect is priced <strong>per active service line</strong> at $97 per month. Most customers need one.</p>
+      <div class="wrap">
+        <table>
+          <caption>How connections are counted</caption>
+          <thead>
+            <tr><th scope="col">Setup</th><th scope="col">Billed as</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>One active carrier connection</td><td>One line — $97/mo</td></tr>
+            <tr><td>Two simultaneously active or failover carrier connections</td><td>Two lines — $97/mo each</td></tr>
+            <tr><td>A dual-SIM router with only one active line</td><td>One line — $97/mo</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>A second connection is what gives you automatic failover if one carrier goes down. It is genuinely a second service line, and it is billed as one.</p>
+    </section>
+
+    <section>
+      <h2>Equipment and setup</h2>
+      <div class="wrap">
+        <table>
+          <caption>One-time Equipment and Setup Fee</caption>
+          <thead>
+            <tr><th scope="col">Option</th><th scope="col">Fee</th><th scope="col">What's included</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Wifi Squared-provided device</td>
+              <td><strong>$150</strong></td>
+              <td>Device and setup. You own the device.</td>
+            </tr>
+            <tr>
+              <td>Approved customer-owned compatible device</td>
+              <td><strong>$0</strong></td>
+              <td>SIM, standard shipping or pickup, and remote activation.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Monthly service is $97 either way. Applicable sales tax is added when a Wifi Squared-provided device is purchased; monthly internet service is not taxed.</p>
+
+      <h3>Bringing your own device</h3>
+      <ul>
+        <li><strong>Compatibility must be approved before activation.</strong> Not every cellular router will work on the carrier we select for your address.</li>
+        <li>The first month's $97 payment is required before the SIM is sent.</li>
+        <li>You configure the device. If you'd like us to help, that assistance is billed under our service-call policy — $65 per hour plus applicable sales tax, one-hour minimum, then in 15-minute increments.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>What Mobile Connect does not include</h2>
+      <ul>
+        <li><strong>Cellular voice and SMS.</strong> Mobile Connect is a data service. It is not a phone plan and will not replace one.</li>
+        <li><strong>A coverage guarantee.</strong> Cellular performance depends on things no provider controls — terrain, building materials, how busy the network is at that moment, and the equipment in use.</li>
+      </ul>
+      <div class="note">
+        <p><strong>Before you activate, ask us to check your address.</strong> We'll review the specific location and the device you plan to use, and tell you straight whether Mobile Connect is likely to work there. That review is free and it is the whole point of this page.</p>
+      </div>
+    </section>
+
+    <div class="cta">
+      <h2>Get an address-specific review</h2>
+      <p>Tell us where the service is going and what equipment you have. We'll tell you what to expect before you pay for anything.</p>
+      <a class="btn" href="tel:+18653664006">Call (865) 366-4006</a>
+      <a class="btn btn-ghost" href="sms:+18653664006">Text us</a>
+      <a class="btn btn-ghost" href="/#contact">Send a message</a>
+    </div>
+
+    <section>
+      <h2>Plan details</h2>
+      <p>The full required disclosure for this plan — monthly price, one-time fees, typical speeds, and data policy — is on the <a href="/broadband-labels/mobile-connect">Mobile Connect Broadband Facts label</a>.</p>
+      <p class="updated">Coverage information last reviewed 30 July 2026.</p>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <p>Wifi Squared — locally owned internet for East Tennessee.</p>
+    <ul class="foot-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/broadband-labels">Broadband Facts</a></li>
+      <li><a href="/terms">Terms of Service</a></li>
+      <li><a href="/privacy">Privacy</a></li>
+      <li><a href="https://wifi2.unmsapp.com/crm/login" target="_blank" rel="noopener">Customer Login</a></li>
+      <li><a href="tel:+18653664006">(865) 366-4006</a></li>
+      <li><a href="mailto:connect@wifisquared.com">connect@wifisquared.com</a></li>
+    </ul>
+  </div>
+</footer>
+
+</body>
+</html>

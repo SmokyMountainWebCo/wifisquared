@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us | Wifi Squared</title>
+<link rel="canonical" href="https://wifisquared.com/contact">
+<meta name="description" content="Reach the Wifi Squared team — call or text (865) 366-4006, email support or sales, or send us a message. Local internet support for East Tennessee.">
+
+<!-- ============================================================
+  CONTACT US — built to Jermaine's spec, 20260730.
+
+  This is also the public contact page the FCC Broadband Labels
+  point at, so the company name, mailing address, both email
+  addresses and the phone number are all rendered as plain text
+  on the page. Per his note: do NOT put contact details behind the
+  form only.
+
+  Deliberately omitted, per his final design note: no map, no
+  office photo, no social links.
+
+  FORM: Formspree xaqrkvwz — a DIFFERENT endpoint from the
+  availability form on index.html (mlgqajle). Don't cross them.
+
+  CONDITIONAL LOGIC: picking "New Internet Service / Availability"
+  makes the service-address fields required. Every other reason
+  leaves them optional. Implemented in JS at the bottom, with the
+  required attributes toggled so the form's own validation and the
+  visible * markers stay in sync.
+============================================================ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{--navy:#0A1F3C;--navy-2:#122B4F;--sky:#2E7CF6;--sky-soft:#EAF2FE;--amber:#F6A82C;--ink:#182234;--mute:#5B6B84;--line:#DCE5F2;--white:#FFFFFF;--radius:14px;--display:'Space Grotesk',sans-serif;--body:'Inter',sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--ink);background:var(--white);line-height:1.7;font-size:16.5px}
+a{color:var(--sky);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:1040px;margin:0 auto;padding:0 22px}
+.nav{position:sticky;top:0;z-index:50;background:rgba(10,31,60,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:70px;max-width:1140px;margin:0 auto;padding:0 22px}
+.logo{font-family:var(--display);font-weight:700;font-size:1.35rem;color:var(--white)}
+.sq{color:var(--amber);font-weight:700;font-size:1rem;vertical-align:super}
+.nav a.back{color:rgba(255,255,255,.85);font-size:.92rem;font-weight:500}
+.nav a.back:hover{color:#fff}
+
+article{padding:64px 0 40px}
+.crumb{font-size:.85rem;color:var(--mute);margin-bottom:22px}
+.crumb a{color:var(--mute)}
+.crumb a:hover{color:var(--sky)}
+h1{font-family:var(--display);font-size:clamp(1.8rem,4vw,2.5rem);line-height:1.15;letter-spacing:-.01em;margin-bottom:14px;max-width:18ch}
+.sub{color:var(--mute);font-size:1.05rem;margin-bottom:40px;max-width:62ch}
+
+/* Desktop: info left, form right. Mobile order is set below. */
+.grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:44px;align-items:start}
+h2{font-family:var(--display);font-size:1.25rem;margin-bottom:12px}
+.info h3{font-family:var(--display);font-size:1rem;margin:0 0 6px}
+.block{margin-bottom:30px}
+.block p{margin-bottom:6px}
+.note{font-size:.9rem;color:var(--mute)}
+.card{background:var(--sky-soft);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;margin-bottom:30px}
+.card p:last-child{margin-bottom:0}
+.tel{font-family:var(--display);font-size:1.3rem;font-weight:700;display:inline-block;margin-top:4px}
+
+form{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:0 10px 30px rgba(10,31,60,.06)}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.full{grid-column:1/-1}
+label{display:block;font-weight:600;font-size:.88rem;margin-bottom:6px}
+.req{color:#D64545}
+input,select,textarea{width:100%;font-family:inherit;font-size:16px;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);min-height:48px}
+textarea{min-height:130px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--sky);box-shadow:0 0 0 3px rgba(46,124,246,.15)}
+input.invalid,select.invalid,textarea.invalid{border-color:#D64545;background:#FFF6F6}
+fieldset{border:1px solid var(--line);border-radius:10px;padding:16px;margin-top:4px}
+legend{font-weight:600;font-size:.88rem;padding:0 6px}
+.addr-hint{font-size:.85rem;color:var(--mute);margin-bottom:12px}
+.sms{font-size:.8rem;color:var(--mute);line-height:1.55;margin-top:18px}
+.btn{display:inline-block;font-family:var(--display);font-weight:600;font-size:.98rem;padding:15px 32px;border-radius:10px;background:var(--amber);color:var(--navy);border:0;cursor:pointer;min-height:48px;margin-top:18px}
+.btn:hover{text-decoration:none;filter:brightness(.97)}
+.msg{display:none;border-radius:10px;padding:16px 18px;margin-bottom:18px;font-size:.95rem}
+.msg.show{display:block}
+.msg.ok{background:#E6F7ED;border:1.5px solid #2E9E5B;color:#14532D}
+.msg.err{background:#FFF1F1;border:1.5px solid #D64545;color:#7F1D1D}
+
+.outage{border-top:1px solid var(--line);margin-top:56px;padding-top:40px}
+.outage ol{margin:0 0 18px 22px}
+.outage li{margin-bottom:8px}
+
+footer{background:#071628;color:rgba(255,255,255,.6);padding:28px 0;font-size:.82rem;text-align:center;margin-top:56px}
+footer a{color:var(--amber)}
+
+/* Mobile order per spec: heading, form, contact info, hours, outage, address.
+   The mailing-address block is moved last on small screens. */
+@media(max-width:820px){
+  .grid{grid-template-columns:1fr;gap:34px}
+  .form-col{order:1}
+  .info{order:2;display:flex;flex-direction:column}
+  .info .b-email{order:1}
+  .info .b-phone{order:2}
+  .info .b-hours{order:3}
+  .info .b-mail{order:4}
+  .fgrid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class='logo' href='/'>Wifi<span class="sq">²</span></a>
+    <a class='back' href='/'>← Back to site</a>
+  </div>
+</nav>
+
+<article>
+  <div class="container">
+    <div class="crumb"><a href='/'>Home</a> / Contact Us</div>
+    <h1>Need Internet Help? We're Here to Connect You.</h1>
+    <p class="sub">Whether you are looking for reliable internet service, need help with your existing account, or have a question for our team, we are here to help.</p>
+
+    <div class="grid">
+
+      <!-- ---------------- LEFT: contact information ---------------- -->
+      <div class="info">
+
+        <div class="block b-phone">
+          <h2>Call or Text</h2>
+          <a class="tel" href="tel:8653664006">865-366-4006</a>
+        </div>
+
+        <div class="block b-email">
+          <h2>Via Email</h2>
+          <h3>Support &amp; Billing</h3>
+          <p><a href="mailto:tickets@wifisquared.com">tickets@wifisquared.com</a></p>
+          <h3 style="margin-top:14px">General Questions</h3>
+          <p><a href="mailto:connect@wifisquared.com">connect@wifisquared.com</a></p>
+        </div>
+
+        <div class="card b-hours">
+          <h2>Hours</h2>
+          <h3>Sales Hours</h3>
+          <p>Monday–Friday<br>8:30 AM – 5:00 PM Eastern</p>
+          <h3 style="margin-top:14px">Customer Support</h3>
+          <p>Call or text us anytime. Text messages are preferred before 9:00 AM, after 5:00 PM, and on weekends. Messages received outside regular business hours will be answered as soon as possible.</p>
+        </div>
+
+        <div class="block b-mail">
+          <h2>Mailing Address</h2>
+          <p>Wifi Squared, LLC<br>
+          713 Winfield Dunn Parkway<br>
+          Suite 2 #1054<br>
+          Sevierville, TN 37876</p>
+          <p class="note">Mailing address only. No public walk-in office available.</p>
+        </div>
+
+      </div>
+
+      <!-- ---------------- RIGHT: contact form ---------------- -->
+      <div class="form-col">
+        <h2>Contact Form</h2>
+
+        <div class="msg ok" id="c-ok" role="status" aria-live="polite">
+          Thank you! We received your message and will respond as soon as possible.
+        </div>
+        <div class="msg err" id="c-err" role="alert">
+          We couldn't send your message. Please try again, or call or text us at
+          <a href="tel:8653664006" style="font-weight:600;text-decoration:underline">865-366-4006</a>.
+        </div>
+
+        <form id="contact-form" action="https://formspree.io/f/xaqrkvwz" method="POST">
+          <input type="hidden" name="_subject" value="New contact form message — wifisquared.com">
+          <!-- honeypot: limits automated submissions -->
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none">
+
+          <div class="fgrid">
+            <div>
+              <label for="c-fn">First Name <span class="req">*</span></label>
+              <input id="c-fn" name="first_name" autocomplete="given-name" required>
+            </div>
+            <div>
+              <label for="c-ln">Last Name <span class="req">*</span></label>
+              <input id="c-ln" name="last_name" autocomplete="family-name" required>
+            </div>
+
+            <div class="full">
+              <label for="c-reason">How may we help you? <span class="req">*</span></label>
+              <select id="c-reason" name="reason" required>
+                <option value="">Please choose…</option>
+                <option>New Internet Service / Availability</option>
+                <option>Existing Customer Support</option>
+                <option>Billing or Account Question</option>
+                <option>Business Internet</option>
+                <option>Partnership / Property Inquiry</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="full">
+              <label for="c-best">Best Way to Contact <span class="req">*</span></label>
+              <select id="c-best" name="best_way_to_contact" required>
+                <option>Email</option>
+                <option>Phone Call</option>
+                <option>Text Message</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="c-em">Email <span class="req">*</span></label>
+              <input id="c-em" name="email" type="email" autocomplete="email" required>
+            </div>
+            <div>
+              <label for="c-ph">Phone</label>
+              <input id="c-ph" name="phone" type="tel" autocomplete="tel">
+            </div>
+
+            <div class="full">
+              <fieldset>
+                <legend>Service Address <span class="req" id="addr-star" hidden>*</span></legend>
+                <p class="addr-hint" id="addr-hint">Optional — but required if you're checking availability for new service.</p>
+                <div class="fgrid">
+                  <div class="full">
+                    <label for="c-addr">Address</label>
+                    <input id="c-addr" name="service_address" autocomplete="street-address">
+                  </div>
+                  <div>
+                    <label for="c-city">City</label>
+                    <input id="c-city" name="city" autocomplete="address-level2">
+                  </div>
+                  <div>
+                    <label for="c-state">State</label>
+                    <input id="c-state" name="state" autocomplete="address-level1" value="TN">
+                  </div>
+                  <div>
+                    <label for="c-zip">ZIP Code</label>
+                    <input id="c-zip" name="zip" inputmode="numeric" autocomplete="postal-code">
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            <div class="full">
+              <label for="c-msg">Details <span class="req">*</span></label>
+              <textarea id="c-msg" name="details" placeholder="Please tell us how we can help." required></textarea>
+            </div>
+          </div>
+
+          <p class="sms">By texting and/or adding your mobile number and submitting, you agree to receive text messages for communication purposes at the provided number from Wifi Squared, LLC. Message frequency varies, and standard message and data rates may apply. You have the right to OPT-OUT of receiving messages at any time. To OPT-OUT, reply "STOP" to any text message you receive from us. Reply HELP for assistance. Please read our <a href='/privacy'>Privacy Policy</a> for more information. Thank you.</p>
+
+          <button class="btn" id="c-submit" type="submit">Submit</button>
+        </form>
+      </div>
+
+    </div>
+
+    <!-- ---------------- outage self-help ---------------- -->
+    <div class="outage">
+      <h2 style="font-size:1.4rem">Experiencing an Internet Issue?</h2>
+      <p>Before contacting support, try restarting your Wifi Squared equipment.</p>
+      <ol>
+        <li>Disconnect power from your indoor router and Wifi Squared power supply.</li>
+        <li>Wait 30 seconds.</li>
+        <li>Reconnect power.</li>
+      </ol>
+      <p>If your service does not return, call or text us at <a href="tel:8653664006">865-366-4006</a>.</p>
+    </div>
+
+  </div>
+</article>
+
+<footer>
+  <div class="container">© 2026 Wifi Squared, LLC · <a href='/'>wifisquared.com</a> · <a href="https://wifi2.unmsapp.com/crm/login" target="_blank" rel="noopener">Customer Login</a> ·
+    <a class="ml-onclick-form" href="javascript:void(0)" data-ml-form="BFZAK8">Get email updates</a> ·
+    <a href='/privacy'>Privacy</a> · <a href='/terms'>Terms</a> ·
+    <a href='/network-management-practices'>Network Management</a> ·
+    Site by <a href="https://smokymountainwebco.com">Smoky Mountain Web Co.</a></div>
+</footer>
+
+<script>
+/* ---- conditional service-address requirement ---------------------------
+   "New Internet Service / Availability" makes the address fields required;
+   every other reason leaves them optional. The required attributes are
+   toggled so the visible * and the validation below never disagree. */
+(function(){
+  const reason=document.getElementById('c-reason');
+  const star=document.getElementById('addr-star');
+  const hint=document.getElementById('addr-hint');
+  const fields=['c-addr','c-city','c-state','c-zip'].map(id=>document.getElementById(id));
+  function apply(){
+    const need=reason.value==='New Internet Service / Availability';
+    fields.forEach(f=>{ need?f.setAttribute('required',''):f.removeAttribute('required');
+      if(!need)f.classList.remove('invalid'); });
+    star.hidden=!need;
+    hint.textContent=need
+      ? 'Required — we need the address to check what service is available there.'
+      : "Optional — but required if you're checking availability for new service.";
+  }
+  reason.addEventListener('change',apply);
+  apply();
+
+  /* ---- submit over fetch so the visitor stays on the page ---- */
+  const form=document.getElementById('contact-form');
+  const ok=document.getElementById('c-ok'), err=document.getElementById('c-err');
+  const submit=document.getElementById('c-submit');
+  let sending=false;
+
+  // Validation is handled below rather than by the browser, so the invalid
+  // field is highlighted and scrolled to. Set from JS on purpose: with JS
+  // off the required attributes still guard the plain POST fallback.
+  form.setAttribute('novalidate','');
+
+  form.querySelectorAll('input,select,textarea').forEach(f=>{
+    f.addEventListener('input',()=>f.classList.remove('invalid'));
+    f.addEventListener('change',()=>f.classList.remove('invalid'));
+  });
+
+  function validate(){
+    let firstBad=null;
+    form.querySelectorAll('[required]').forEach(f=>{
+      const v=(f.value||'').trim();
+      const bad=!v||(f.type==='email'&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v));
+      f.classList.toggle('invalid',bad);
+      if(bad&&!firstBad)firstBad=f;
+    });
+    if(firstBad){firstBad.focus();firstBad.scrollIntoView({behavior:'smooth',block:'center'});}
+    return !firstBad;
+  }
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(sending)return;
+    ok.classList.remove('show'); err.classList.remove('show');
+    if(!validate()){ err.classList.add('show'); return; }
+
+    sending=true; submit.disabled=true;
+    const label=submit.textContent; submit.textContent='Sending…';
+
+    fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
+      .then(r=>{ if(!r.ok)throw new Error('bad status');
+        form.reset(); apply();
+        ok.classList.add('show');
+        ok.scrollIntoView({behavior:'smooth',block:'center'});
+        setTimeout(()=>{sending=false;submit.disabled=false;submit.textContent=label;},2500);
+      })
+      .catch(()=>{ err.classList.add('show');
+        err.scrollIntoView({behavior:'smooth',block:'center'});
+        sending=false; submit.disabled=false; submit.textContent=label;
+      });
+  });
+})();
+</script>
+
+<!-- [12] E-NEWSLETTER — MailerLite Universal (account 2535272). -->
+<!-- MailerLite Universal -->
+<script>
+(function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+.push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+ml('account', '2535272');
+</script>
+<!-- End MailerLite Universal -->
+<script>
+document.addEventListener('click',function(e){
+  const t=e.target&&e.target.closest&&e.target.closest('[data-ml-form]');
+  if(!t)return;
+  e.preventDefault();
+  if(window.ml)ml('show',t.dataset.mlForm,true);
+});
+</script>
+</body>
+</html>
