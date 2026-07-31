@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Wifi Squared">
+  <title>Wifi Squared</title>
+  <!-- The nav's 3D brand mark (#logo3d) frozen at full signal: dot + two arcs,
+       108° span, amber on navy. Geometry mirrors the three.js build in
+       index.html — arcs in the same .42 : .74 radius ratio, struck from the
+       same centre as the dot — so the tab icon and the animated mark read as
+       one thing. Sized to fill the tile, because the size that has to work is
+       16px in a tab strip, not 512 in a manifest. -->
+  <rect width="32" height="32" rx="7" fill="#0A1F3C"/>
+  <g fill="none" stroke="#F6A82C" stroke-width="3.8" stroke-linecap="round">
+    <path d="M4.84 14.29A13.8 13.8 0 0 1 27.16 14.29"/>
+    <path d="M9.37 17.58A8.2 8.2 0 0 1 22.63 17.58"/>
+  </g>
+  <circle cx="16" cy="22.4" r="3.4" fill="#F6A82C"/>
+</svg>

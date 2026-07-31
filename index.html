@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light only">
 <title>Wifi Squared | Local Internet for East Tennessee</title>
+<!-- Favicon — the nav's animated mark frozen at full signal. Absolute paths so
+     /broadband-labels/ resolves them too. .ico first for browsers that ignore
+     SVG icons; SVG second so the ones that support it win on sharpness. -->
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0A1F3C">
 <meta name="description" content="Fast, reliable fixed wireless, fiber, and mobile internet for East Tennessee homes and businesses. Check availability at your address.">
 
 <!-- ============================================================
@@ -171,6 +179,28 @@
                             it unlinkable from a public nav. A dead status link
                             is worst exactly when it gets used, during an
                             outage, so it stays out until the URL is confirmed.
+    [16] Favicon          — ADDED 20260731 at Jermaine's request. Until now no
+                            page on the site declared one at all, so every tab
+                            showed the browser's blank page icon.
+                            It is the nav mark (#logo3d) frozen at full signal —
+                            same dot, same two arcs, same .42:.74 radius ratio,
+                            amber on navy — drawn as vector in favicon.svg. That
+                            file is the master: edit it and re-run the raster
+                            step to regenerate favicon.ico (16/32/48),
+                            apple-touch-icon.png (180, square and opaque because
+                            iOS masks its own corners), icon-192/512.png and
+                            icon-maskable-512.png (extra padding so Android's
+                            circular crop does not clip the arcs).
+                            NOT ANIMATED, and it cannot be: Chrome, Edge and
+                            Safari all render SVG favicons without running the
+                            animation inside them, and animated GIF favicons
+                            only ever moved in Firefox. Driving it from JS by
+                            repainting a canvas into the <link> each frame does
+                            work in Chrome, but it burns battery for the life of
+                            the tab and still does nothing for bookmarks,
+                            history or search results, which only ever see the
+                            static file. Full signal is the right frame anyway —
+                            it is the one the animation resolves to.
 ============================================================ -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
