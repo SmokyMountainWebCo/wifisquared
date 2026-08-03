@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light only">
 <title>Wifi Squared | Local Internet for East Tennessee</title>
+<!-- Favicon — the nav's animated mark frozen at full signal. Absolute paths so
+     /broadband-labels/ resolves them too. .ico first for browsers that ignore
+     SVG icons; SVG second so the ones that support it win on sharpness. -->
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0A1F3C">
 <meta name="description" content="Fast, reliable fixed wireless, fiber, and mobile internet for East Tennessee homes and businesses. Check availability at your address.">
 
 <!-- ============================================================
@@ -20,12 +28,12 @@
                             install + equipment fee disclosed above the cards.
                             Performance Connect is the only badged plan and
                             does NOT jump above cheaper plans on mobile.
-    [4b] FCC labels       — OUTSTANDING. Every plan card has an empty
-                            <div class="fcc-slot" data-fcc="Plan Name"> reserved
-                            for its Broadband Consumer Label. The old claim that
-                            labels were already available has been removed. Do
-                            not ship placeholder/dead label links. Re-check the
-                            current FCC display rule when the labels are built.
+    [4b] FCC labels       — DONE. Every plan card carries its Broadband
+                            Consumer Label inline in a
+                            <div class="plan-label-wrap" data-fcc="Plan Name">.
+                            Styling comes from broadband-labels-embed.css, which
+                            is scoped so nothing leaks into the page. Standalone
+                            copies live at /broadband-labels/.
                             Two label fields are partly answered by terms.html
                             (ported 20260729), and both contradict what the
                             label draft assumes:
@@ -93,12 +101,113 @@
                             MailerLite list. If Jermaine wants an inline
                             embedded form instead of/alongside the pop-up, ask
                             him for the embed snippet — it is a separate block.
+    [13] Customer Login   — ADDED 20260731 at Jermaine's request. Header (top
+                            right, ahead of the phone) + every footer. Points at
+                            the Ubiquiti UISP CRM client portal:
+                              https://wifi2.unmsapp.com/crm/login
+                            SWAP TO THE BRANDED DOMAIN when it works. DNS is
+                            already right — login.wifisquared.com is a CNAME to
+                            wifi2.unmsapp.com — but UISP is not serving that
+                            hostname: it answers 503 and presents its default
+                            *.unmsapp.com certificate, which does not match, so
+                            a browser shows a cert warning before the error.
+                            Jermaine has to add login.wifisquared.com as the
+                            public/custom domain inside UISP so it provisions a
+                            certificate. Verified broken 20260731 — do not link
+                            it until it resolves.
+                            "Coverage" came OUT of the header to pay for this:
+                            Check Availability is the same question in a
+                            stronger form (it takes an address). The #coverage
+                            section and the footer's Coverage Area link stay.
+    [15] Photos           — The Home Internet card now uses Jermaine's own
+                            image at images/home-streaming-cabin.jpg (2:1, sized
+                            for the 190px card at >3x). The full frame is kept
+                            at images/cabin-streaming-full.jpg.
+                            TWO THINGS WERE EDITED OUT of the image he sent, and
+                            neither is cosmetic: the TV showed the Netflix,
+                            Disney+, Apple TV, Hulu, Roku, Paramount+, ESPN,
+                            YouTube and Peacock marks, and the shelf showed a
+                            legible Ticket to Ride box. Using those on an ISP's
+                            own marketing implies carriage or partnership that
+                            does not exist. The screen was rebuilt as unbranded
+                            content tiles; the box title was softened to match
+                            its already-illegible neighbours. Rebuild scripts
+                            are screen.py / composite.py in the session folder.
+                            Any further AI image gets the same pass before it
+                            ships — the generator had also misspelled "Disnep+"
+                            and "Streamning Store", which is the tell.
+                            20260731, same day: Business Internet and
+                            Professional Installation now carry Jermaine's
+                            photos too, so the hero background is the last
+                            Unsplash hotlink on the page (line ~677). It still
+                            carries onerror="this.remove()", so if Unsplash
+                            blocks hotlinking it silently vanishes rather than
+                            breaking the layout — but it does vanish. Replace it
+                            as Jermaine's son produces more.
+                              - Business Internet -> images/business-internet-
+                                food-park.jpg, the Wears Valley food park we
+                                serve. Alternate from the same message is
+                                images/wears-valley-fall-fest.jpg (the Fall Fest
+                                we provide internet for each year) — a plain src
+                                swap, it is already cut to the same 2:1.
+                              - Professional Install -> images/professional-
+                                installation-tower.jpg, one of the crew on a
+                                tower. He sent two edits of this shot, overcast
+                                and a blue-sky version; only the overcast one
+                                came through at full resolution, so that is the
+                                one shipped. Ask him for the blue-sky original
+                                if he prefers it — it is a one-file swap.
+                            ⚠ THREE THINGS OUTSTANDING on the two new photos:
+                              - Both venue photos are 474px-wide web copies
+                                Jermaine found on-line, not originals. They are
+                                the only images on the page under the 2x the
+                                190px card wants, and they cannot be reused any
+                                larger. Ask the venues for the originals.
+                              - Neither venue photo is ours. They are third
+                                party photos of businesses we serve. Get written
+                                permission from the food park and the Fall Fest
+                                organisers, or reshoot — our crew is at both.
+                              - The tower is not an East Tennessee ridge. Fine
+                                as a generic install shot, but one of our own
+                                tower sites would be stronger and is free.
+    [14] Network Status   — REQUESTED but NOT SHIPPED: there is no verified URL.
+                            Markup is in place and commented out in two spots
+                            (nav + homepage footer); uncomment both and fill in
+                            NETWORK_STATUS_URL. Ask Jermaine first whether this
+                            is a public page or the UISP outage view — the UISP
+                            one lives BEHIND the client login, which would make
+                            it unlinkable from a public nav. A dead status link
+                            is worst exactly when it gets used, during an
+                            outage, so it stays out until the URL is confirmed.
+    [16] Favicon          — ADDED 20260731 at Jermaine's request. Until now no
+                            page on the site declared one at all, so every tab
+                            showed the browser's blank page icon.
+                            It is the nav mark (#logo3d) frozen at full signal —
+                            same dot, same two arcs, same .42:.74 radius ratio,
+                            amber on navy — drawn as vector in favicon.svg. That
+                            file is the master: edit it and re-run the raster
+                            step to regenerate favicon.ico (16/32/48),
+                            apple-touch-icon.png (180, square and opaque because
+                            iOS masks its own corners), icon-192/512.png and
+                            icon-maskable-512.png (extra padding so Android's
+                            circular crop does not clip the arcs).
+                            NOT ANIMATED, and it cannot be: Chrome, Edge and
+                            Safari all render SVG favicons without running the
+                            animation inside them, and animated GIF favicons
+                            only ever moved in Firefox. Driving it from JS by
+                            repainting a canvas into the <link> each frame does
+                            work in Chrome, but it burns battery for the life of
+                            the tab and still does nothing for bookmarks,
+                            history or search results, which only ever see the
+                            static file. Full signal is the right frame anyway —
+                            it is the one the animation resolves to.
 ============================================================ -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=Tangerine:wght@700&display=swap" rel="stylesheet">
 
+<link rel="stylesheet" href="/broadband-labels/broadband-labels-embed.css">
 <style>
 :root{
   --navy:#0A1F3C;        /* deep base */
@@ -154,6 +263,17 @@ h2{font-size:clamp(1.7rem,3.4vw,2.4rem);margin-bottom:14px}
 .nav-links a:hover{color:var(--white)}
 .nav-phone{color:var(--amber)!important;font-family:var(--display);font-weight:600}
 .nav-cta{padding:10px 18px;font-size:.85rem}
+/* [13] CUSTOMER LOGIN — deliberately NOT styled like the marketing links.
+   A returning customer aims at a known target instead of reading the nav, so
+   it gets a button outline. Amber stays reserved for Check Availability so
+   there is exactly one primary action on the screen. Selectors are
+   .nav-links .nav-login (0,2,0) because plain .nav-login (0,1,0) loses to
+   .nav-links a (0,1,1) on both colour and font-size. */
+.nav-links .nav-login{color:#fff;border:1.5px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 14px;font-size:.85rem;font-weight:600;line-height:1;white-space:nowrap}
+.nav-links .nav-login:hover{border-color:var(--amber);color:var(--amber)}
+/* [14] Network Status rides in the mobile drawer only — on desktop the footer
+   carries it, per Jermaine 20260731. */
+.nav-status{display:none}
 /* 44x44 minimum tap target per the master revision brief (§34) — the glyph
    itself is only ~23x31, so the button is sized rather than the icon */
 .nav-toggle{display:none;background:none;border:0;color:#fff;font-size:1.6rem;cursor:pointer;min-width:44px;min-height:44px;align-items:center;justify-content:center;padding:0}
@@ -318,6 +438,8 @@ footer{background:#071628;color:rgba(255,255,255,.7);padding:48px 0 28px;font-si
   #logo3d{width:56px;height:56px;flex:0 0 56px}
   .nav-links{max-height:calc(100vh - 70px);overflow-y:auto;-webkit-overflow-scrolling:touch}
   .nav-links .nav-cta{width:100%;text-align:center}
+  .nav-links .nav-login{width:100%;text-align:center;min-height:44px;display:flex;align-items:center;justify-content:center}
+  .nav-links .nav-status{display:block}
   .nav-contact{display:flex;gap:10px;width:100%}
   .nav-contact a{flex:1;text-align:center;border:1.5px solid rgba(255,255,255,.35);border-radius:10px;padding:12px 8px;font-family:var(--display);font-weight:600;font-size:.9rem;color:var(--amber)!important;min-height:44px}
   .nav-links .nav-phone{display:none}
@@ -357,8 +479,8 @@ footer{background:#071628;color:rgba(255,255,255,.7);padding:48px 0 28px;font-si
 .sum-m{display:none}
 @media(max-width:860px){.sum-d{display:none}.sum-m{display:inline}}
 
-/* --- FCC Broadband Consumer Label: reserved slot per plan --- */
-.fcc-slot{min-height:20px;margin:10px 0 4px}
+.fee-callout p+p{margin-top:.6rem}
+.fee-callout .fee-tax{font-size:.94rem;opacity:.85}
 
 /* --- reviews: short excerpts on mobile --- */
 .rev-short{display:none}
@@ -414,7 +536,7 @@ footer{background:#071628;color:rgba(255,255,255,.7);padding:48px 0 28px;font-si
       "url": "https://wifisquared.com/",
       "telephone": "+1-865-366-4006",
       "email": "connect@wifisquared.com",
-      "description": "Locally owned internet service provider connecting East Tennessee homes and businesses through fixed wireless, fiber, and mobile internet options. No annual contracts, local support, and straightforward pricing. A one-time $150 installation and equipment fee applies to every plan.",
+      "description": "Locally owned internet service provider connecting East Tennessee homes and businesses through fixed wireless, fiber, and mobile internet options. No annual contracts, local support, and straightforward pricing. A one-time $150 Installation and Equipment Setup Fee applies to every plan.",
       "areaServed": [
         {"@type": "City", "name": "Wears Valley"},
         {"@type": "City", "name": "Sevierville"},
@@ -433,7 +555,7 @@ footer{background:#071628;color:rgba(255,255,255,.7);padding:48px 0 28px;font-si
             "@type": "Offer",
             "name": "Essential Connect",
             "category": "Fixed Wireless Internet",
-            "description": "Up to 18 Mbps fixed wireless internet with no annual contracts and no data caps. A straightforward plan for smaller households and lighter daily internet use: email and web browsing, social media, smart-home basics, and streaming on a few devices. Professional installation provided. A one-time $150 installation and equipment fee applies, plus applicable sales tax.",
+            "description": "Up to 18 Mbps fixed wireless internet with no annual contracts and no data caps. A straightforward plan for smaller households and lighter daily internet use: email and web browsing, social media, smart-home basics, and streaming on a few devices. Professional installation provided. A one-time $150 Installation and Equipment Setup Fee applies, plus applicable sales tax. A customer-provided or separately purchased Wi-Fi router is required.",
             "price": "60",
             "priceCurrency": "USD"
           },
@@ -441,7 +563,7 @@ footer{background:#071628;color:rgba(255,255,255,.7);padding:48px 0 28px;font-si
             "@type": "Offer",
             "name": "Standard Connect",
             "category": "Fixed Wireless Internet",
-            "description": "Up to 50 Mbps fixed wireless internet with no annual contracts and no data caps. More room for streaming, online learning, video calls, gaming, and multiple connected devices. Professional installation provided. A one-time $150 installation and equipment fee applies, plus applicable sales tax.",
+            "description": "Up to 50 Mbps fixed wireless internet with no annual contracts and no data caps. More room for streaming, online learning, video calls, gaming, and multiple connected devices. Professional installation provided. A one-time $150 Installation and Equipment Setup Fee applies, plus applicable sales tax. A customer-provided or separately purchased Wi-Fi router is required.",
             "price": "75",
             "priceCurrency": "USD"
           },
@@ -449,7 +571,7 @@ footer{background:#071628;color:rgba(255,255,255,.7);padding:48px 0 28px;font-si
             "@type": "Offer",
             "name": "Performance Connect",
             "category": "Fixed Wireless Internet",
-            "description": "Up to 100 Mbps fixed wireless internet with no annual contracts and no data caps. Our most popular fixed wireless plan for households that work from home, stream in 4K, game, run cloud backups, and use several devices at once. Professional installation provided. A one-time $150 installation and equipment fee applies, plus applicable sales tax.",
+            "description": "Up to 100 Mbps fixed wireless internet with no annual contracts and no data caps. Our most popular fixed wireless plan for households that work from home, stream in 4K, game, run cloud backups, and use several devices at once. Professional installation provided. A one-time $150 Installation and Equipment Setup Fee applies, plus applicable sales tax. A customer-provided or separately purchased Wi-Fi router is required.",
             "price": "97",
             "priceCurrency": "USD"
           },
@@ -457,7 +579,7 @@ footer{background:#071628;color:rgba(255,255,255,.7);padding:48px 0 28px;font-si
             "@type": "Offer",
             "name": "Ultra Connect",
             "category": "Fixed Wireless Internet",
-            "description": "Up to 500 Mbps fixed wireless internet with no annual contracts and no data caps. Designed for larger households, multiple remote workers, heavy streaming, advanced smart homes, and many connected devices. Professional installation provided. A one-time $150 installation and equipment fee applies, plus applicable sales tax.",
+            "description": "Up to 500 Mbps fixed wireless internet with no annual contracts and no data caps. Designed for larger households, multiple remote workers, heavy streaming, advanced smart homes, and many connected devices. Professional installation provided. A one-time $150 Installation and Equipment Setup Fee applies, plus applicable sales tax. A customer-provided or separately purchased Wi-Fi router is required.",
             "price": "107",
             "priceCurrency": "USD"
           },
@@ -465,7 +587,7 @@ footer{background:#071628;color:rgba(255,255,255,.7);padding:48px 0 28px;font-si
             "@type": "Offer",
             "name": "Fiber Connect",
             "category": "Fiber Internet",
-            "description": "Up to 500 Mbps fiber internet available in select communities served by Wifi Squared, with no annual contracts and no data caps. Built for working from home, streaming households, gaming, and large connected homes. Professional installation provided. A one-time $150 installation and equipment fee applies, plus applicable sales tax.",
+            "description": "Up to 500 Mbps fiber internet available in select communities served by Wifi Squared, with no annual contracts and no data caps. Built for working from home, streaming households, gaming, and large connected homes. Professional installation provided. A one-time $150 Installation and Equipment Setup Fee applies, plus applicable sales tax. A customer-provided or separately purchased Wi-Fi router is required.",
             "price": "75",
             "priceCurrency": "USD"
           },
@@ -473,7 +595,7 @@ footer{background:#071628;color:rgba(255,255,255,.7);padding:48px 0 28px;font-si
             "@type": "Offer",
             "name": "Mobile Connect",
             "category": "Mobile Internet",
-            "description": "Up to 100 Mbps flexible internet powered by cellular networks for home, work, travel, and locations outside the fixed wireless and fiber service areas. Includes unlimited data and no annual contracts. Ideal for RV owners and travelers, remote workers, rural locations, backup internet, and temporary locations. Coverage varies by location. A one-time $150 installation and equipment fee applies, plus applicable sales tax.",
+            "description": "Up to 100 Mbps flexible internet powered by cellular networks for home, work, travel, and locations outside the fixed wireless and fiber service areas. Includes unlimited data and no annual contracts. Ideal for RV owners and travelers, remote workers, rural locations, backup internet, and temporary locations. Coverage varies by location. Equipment and Setup Fee: $150 with a Wifi Squared-provided device, or $0 with an approved customer-owned compatible device. Mobile Connect is priced per active service line.",
             "price": "97",
             "priceCurrency": "USD"
           }
@@ -529,7 +651,7 @@ footer{background:#071628;color:rgba(255,255,255,.7);padding:48px 0 28px;font-si
         {
           "@type": "Question",
           "name": "How much does Wifi Squared internet cost?",
-          "acceptedAnswer": {"@type": "Answer", "text": "Monthly home internet plans currently start at $60. A one-time $150 installation and equipment fee applies to every plan. Applicable sales tax is added to this fee and to any mesh Wi-Fi units purchased. Available plans and speeds depend on your address and network type."}
+          "acceptedAnswer": {"@type": "Answer", "text": "Monthly home internet plans currently start at $60. A one-time $150 Installation and Equipment Setup Fee applies to every plan, covering professional installation and provider-owned network equipment. A customer-provided or separately purchased Wi-Fi router is required; optional mesh Wi-Fi units are $65 each. For Mobile Connect the fee is $150 with a Wifi Squared-provided device, or $0 with an approved customer-owned compatible device. Applicable sales tax is added to this fee and to any equipment purchased; monthly internet service is not taxed. Available plans and speeds depend on your address and network type."}
         },
         {
           "@type": "Question",
@@ -571,6 +693,7 @@ footer{background:#071628;color:rgba(255,255,255,.7);padding:48px 0 28px;font-si
   ]
 }
 </script>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body>
 
@@ -583,9 +706,13 @@ footer{background:#071628;color:rgba(255,255,255,.7);padding:48px 0 28px;font-si
       <a href="#services">Services</a>
       <a href="#pricing">Plans</a>
       <a href="#how">How It Works</a>
-      <a href="#coverage">Coverage</a>
       <a href="#faq">FAQ</a>
       <a href="#blog">Blog</a>
+      <!-- [13] CUSTOMER LOGIN — Ubiquiti UISP CRM client portal. -->
+      <a class="nav-login" href="https://wifi2.unmsapp.com/crm/login" target="_blank" rel="noopener">Login</a>
+      <!-- [14] NETWORK STATUS — no verified URL yet. Uncomment BOTH this and
+           the footer copy once Jermaine confirms the address. -->
+      <!-- <a class="nav-status" href="NETWORK_STATUS_URL">Network Status</a> -->
       <!-- [1] EDIT PHONE -->
       <a class="nav-phone" href="tel:+18653664006">(865) 366-4006</a>
       <!-- mobile-only call / text pair -->
@@ -653,8 +780,11 @@ footer{background:#071628;color:rgba(255,255,255,.7);padding:48px 0 28px;font-si
     <div class="cards">
       <div class="card reveal" id="home-internet">
         <div class="card-img">
-          <!-- [6] SWAP PHOTO: family on couch streaming -->
-          <img src="https://images.unsplash.com/photo-1522543558187-768b6df7c25c?w=800&q=70" alt="Family streaming at home" onerror="this.remove()">
+          <!-- [6] SWAP PHOTO — DONE 20260731. Jermaine's own East Tennessee
+               image, replacing a hotlinked Unsplash stock photo. This one is
+               served from the deploy, so it needs no onerror fallback. See [15]. -->
+          <img src="images/home-streaming-cabin.jpg" width="1240" height="620" loading="lazy" decoding="async"
+               alt="A cabin living room in the East Tennessee mountains — a smart TV streaming, with a ridgeline view through the window.">
         </div>
         <div class="card-body">
           <h3>Home Internet</h3>
@@ -664,8 +794,12 @@ footer{background:#071628;color:rgba(255,255,255,.7);padding:48px 0 28px;font-si
       </div>
       <div class="card reveal" id="business-internet">
         <div class="card-img">
-          <!-- [6] SWAP PHOTO: small business / storefront -->
-          <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=800&q=70" alt="Small business point of sale" onerror="this.remove()">
+          <!-- [6] SWAP PHOTO — DONE 20260731. Jermaine's photo of the Wears
+               Valley food park we provide internet for, replacing a hotlinked
+               Unsplash stock photo. Served from the deploy, so no onerror
+               fallback. Only 474px wide — see [15]. -->
+          <img src="images/business-internet-food-park.jpg" width="474" height="237" loading="lazy" decoding="async"
+               alt="An open-air food park in Wears Valley — picnic tables under yellow umbrellas, food trucks, and the ridge behind.">
         </div>
         <div class="card-body">
           <h3>Business Internet</h3>
@@ -675,12 +809,15 @@ footer{background:#071628;color:rgba(255,255,255,.7);padding:48px 0 28px;font-si
       </div>
       <div class="card reveal">
         <div class="card-img">
-          <!-- [6] SWAP PHOTO: technician / antenna install -->
-          <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&q=70" alt="Technician performing installation" onerror="this.remove()">
+          <!-- [6] SWAP PHOTO — DONE 20260731. One of the crew on a tower,
+               replacing a hotlinked Unsplash stock photo. Served from the
+               deploy, so no onerror fallback. See [15]. -->
+          <img src="images/professional-installation-tower.jpg" width="1240" height="620" loading="lazy" decoding="async"
+               alt="A Wifi Squared technician climbing a communications tower above a mountain valley.">
         </div>
         <div class="card-body">
           <h3>Professional Installation</h3>
-          <p>Our technicians mount and configure the equipment needed for your service, run clean, weatherproof cable when required, and help get you online. Whole-home mesh Wi-Fi options are available for purchase when additional coverage is needed.</p>
+          <p>Our technicians mount and configure the equipment needed for your service, run clean, weatherproof cable when required, and help get you online. A Wi-Fi router is customer-provided or available for separate purchase; optional whole-home mesh units are $65 each when additional coverage is needed.</p>
           <a class="card-link" href="#how">How installation works →</a>
         </div>
       </div>
@@ -719,8 +856,8 @@ footer{background:#071628;color:rgba(255,255,255,.7);padding:48px 0 28px;font-si
      Mobile DOM order = Essential, Standard, Performance, Ultra, Fiber, Mobile.
      Performance keeps the ONLY badge and does NOT jump above cheaper plans.
      $150 install + equipment fee is disclosed above the cards, not in fine print.
-     [FCC] Each card carries an empty .fcc-slot reserved for its Broadband
-     Consumer Label (or the final compliant display method) once created. -->
+     [FCC] Each card carries its Broadband Consumer Label inline, in a
+     .plan-label-wrap styled by /broadband-labels/broadband-labels-embed.css. -->
 <section class="section" id="pricing">
   <div class="container">
     <div class="eyebrow">Simple Pricing</div>
@@ -728,8 +865,10 @@ footer{background:#071628;color:rgba(255,255,255,.7);padding:48px 0 28px;font-si
     <p class="sub">Available plans depend on your address and network type. We'll help you choose the right option without annual contracts or temporary promotional pricing.</p>
 
     <div class="fee-callout">
-      <b>One-time installation and equipment fee</b>
-      <p>A $150 installation and equipment fee applies to every plan. Applicable sales tax is added to this fee and to any mesh Wi-Fi units purchased.</p>
+      <b>One-time installation and Equipment Setup Fee — $150</b>
+      <p>Includes professional installation and provider-owned network equipment. Customer-provided or separately purchased Wi-Fi router required; optional mesh Wi-Fi units are $65 each.</p>
+      <p><b>For Mobile Connect:</b> Equipment and Setup Fee — $150 with a Wifi Squared-provided device; $0 with an approved customer-owned compatible device. Mobile Connect is priced per active service line.</p>
+      <p class="fee-tax">Applicable sales tax is added to this fee and to any equipment purchased. Monthly internet service is not taxed.</p>
     </div>
 
     <!-- ===== FIXED WIRELESS ===== -->
@@ -763,7 +902,125 @@ footer{background:#071628;color:rgba(255,255,255,.7);padding:48px 0 28px;font-si
           <li>Professional installation provided</li>
         </ul>
         <!-- [FCC] Broadband Consumer Label slot — Essential Connect -->
-        <div class="fcc-slot" data-fcc="Essential Connect"></div>
+        <div class="plan-label-wrap" data-fcc="Essential Connect">
+<section class="broadband-label" id="essential-connect-broadband-facts"
+         aria-labelledby="essential-connect-label-title"
+         data-plan="Essential Connect" data-upi="F0023081078ESSENTIAL000001">
+  <header>
+    <h2 class="broadband-label__title" id="essential-connect-label-title">Broadband Facts</h2>
+    <p class="broadband-label__provider">Wifi Squared</p>
+    <p class="broadband-label__plan">Essential Connect</p>
+    <p class="broadband-label__type">Fixed Broadband Consumer Disclosure</p>
+    <div class="label-rule-thick" aria-hidden="true"></div>
+  </header>
+
+  <div class="label-section label-section--first">
+    <div class="label-row label-row--price">
+      <span class="label-row__label">Monthly Price</span>
+      <span class="label-row__value">$60.00</span>
+    </div>
+    <p class="label-copy">This Monthly Price is not an introductory rate.</p>
+    <p class="label-copy">This Monthly Price does not require a contract.</p>
+  </div>
+
+  <div class="label-section">
+    <h2>Additional Charges &amp; Terms</h2>
+    <p class="label-subhead">Provider Monthly Fees</p>
+    <div class="label-row label-row--indent">
+      <span class="label-row__label">None</span>
+      <span class="label-row__value">$0.00</span>
+    </div>
+
+    <p class="label-subhead">One-Time Fees at the Time of Purchase</p>
+      <div class="label-row label-row--indent">
+        <span class="label-row__label">Installation and Equipment Setup Fee</span>
+        <span class="label-row__value">$150.00</span>
+      </div>
+      <div class="label-row label-row--indent">
+        <span class="label-row__label">Optional Mesh Wi-Fi Unit</span>
+        <span class="label-row__value">$65.00 each</span>
+      </div>
+
+    <div class="label-row label-row--indent">
+      <span class="label-row__label">Early Termination Fee</span>
+      <span class="label-row__value">$0.00</span>
+    </div>
+    <div class="label-row label-row--indent">
+      <span class="label-row__label">Government Taxes</span>
+      <span class="label-row__value">Varies by Location</span>
+    </div>
+    <p class="label-note">Sales tax applies to taxable installation and equipment purchases. Monthly internet service is not taxed.</p>
+    <p class="label-note">See <a href="/terms">Terms of Service &amp; Return Policy</a>.</p>
+  </div>
+
+  <div class="label-section">
+    <h2>Discounts &amp; Bundles</h2>
+    <p class="label-copy">Discounts may be available. <a href="/contact">Contact Wifi Squared for eligibility and terms</a>.</p>
+  </div>
+
+  <div class="label-section">
+    <h2>Affordable Connectivity Program (ACP)</h2>
+    <p class="label-copy">Participates in the ACP: <strong>No</strong></p>
+  </div>
+
+  <div class="label-section">
+    <h2>Speeds Provided with Plan</h2>
+    <div class="label-row label-row--indent">
+      <span class="label-row__label">Typical Download Speed</span>
+      <span class="label-row__value">17 Mbps</span>
+    </div>
+    <div class="label-row label-row--indent">
+      <span class="label-row__label">Typical Upload Speed</span>
+      <span class="label-row__value">4 Mbps</span>
+    </div>
+    <div class="label-row label-row--indent">
+      <span class="label-row__label">Typical Latency</span>
+      <span class="label-row__value">23 ms</span>
+    </div>
+  </div>
+
+  <div class="label-section">
+    <div class="label-row">
+      <h2 class="label-row__label">Data Included with Monthly Price</h2>
+      <span class="label-row__value">Unlimited</span>
+    </div>
+    <div class="label-row label-row--indent">
+      <span class="label-row__label">Charges for Additional Data Usage</span>
+      <span class="label-row__value">$0.00</span>
+    </div>
+  </div>
+
+  <div class="label-section">
+    <div class="label-link-row">
+      <span>Network Management</span>
+      <a href="/network-management-practices">Read our Policy</a>
+    </div>
+    <div class="label-link-row">
+      <span>Privacy</span>
+      <a href="/privacy">Read our Policy</a>
+    </div>
+  </div>
+
+  <div class="label-rule-thick" aria-hidden="true"></div>
+
+  <div class="label-section label-section--first">
+    <h2>Customer Support</h2>
+    <p class="support-copy">
+      Contact us: <a href="/contact">wifisquared.com/contact</a> /
+      <a href="tel:+18653664006">(865) 366-4006</a> /
+      <a href="mailto:connect@wifisquared.com">connect@wifisquared.com</a>
+    </p>
+  </div>
+
+  <div class="label-rule-thick" aria-hidden="true"></div>
+
+  <footer>
+    <p class="fcc-copy">Learn more about the terms used on this label by visiting the Federal Communications Commission’s Consumer Resource Center.</p>
+    <p class="fcc-url"><a href="https://www.fcc.gov/consumer">fcc.gov/consumer</a></p>
+    <p class="upi">Unique Plan Identifier: F0023081078ESSENTIAL000001</p>
+  </footer>
+</section>
+</div>
         <a class="btn btn-navy plan-cta" href="#contact" data-plan="Essential Connect">Check Availability</a>
       </div>
 
@@ -790,7 +1047,125 @@ footer{background:#071628;color:rgba(255,255,255,.7);padding:48px 0 28px;font-si
           <li>Professional installation provided</li>
         </ul>
         <!-- [FCC] Broadband Consumer Label slot — Standard Connect -->
-        <div class="fcc-slot" data-fcc="Standard Connect"></div>
+        <div class="plan-label-wrap" data-fcc="Standard Connect">
+<section class="broadband-label" id="standard-connect-broadband-facts"
+         aria-labelledby="standard-connect-label-title"
+         data-plan="Standard Connect" data-upi="F0023081078STANDARD0000001">
+  <header>
+    <h2 class="broadband-label__title" id="standard-connect-label-title">Broadband Facts</h2>
+    <p class="broadband-label__provider">Wifi Squared</p>
+    <p class="broadband-label__plan">Standard Connect</p>
+    <p class="broadband-label__type">Fixed Broadband Consumer Disclosure</p>
+    <div class="label-rule-thick" aria-hidden="true"></div>
+  </header>
+
+  <div class="label-section label-section--first">
+    <div class="label-row label-row--price">
+      <span class="label-row__label">Monthly Price</span>
+      <span class="label-row__value">$75.00</span>
+    </div>
+    <p class="label-copy">This Monthly Price is not an introductory rate.</p>
+    <p class="label-copy">This Monthly Price does not require a contract.</p>
+  </div>
+
+  <div class="label-section">
+    <h2>Additional Charges &amp; Terms</h2>
+    <p class="label-subhead">Provider Monthly Fees</p>
+    <div class="label-row label-row--indent">
+      <span class="label-row__label">None</span>
+      <span class="label-row__value">$0.00</span>
+    </div>
+
+    <p class="label-subhead">One-Time Fees at the Time of Purchase</p>
+      <div class="label-row label-row--indent">
+        <span class="label-row__label">Installation and Equipment Setup Fee</span>
+        <span class="label-row__value">$150.00</span>
+      </div>
+      <div class="label-row label-row--indent">
+        <span class="label-row__label">Optional Mesh Wi-Fi Unit</span>
+        <span class="label-row__value">$65.00 each</span>
+      </div>
+
+    <div class="label-row label-row--indent">
+      <span class="label-row__label">Early Termination Fee</span>
+      <span class="label-row__value">$0.00</span>
+    </div>
+    <div class="label-row label-row--indent">
+      <span class="label-row__label">Government Taxes</span>
+      <span class="label-row__value">Varies by Location</span>
+    </div>
+    <p class="label-note">Sales tax applies to taxable installation and equipment purchases. Monthly internet service is not taxed.</p>
+    <p class="label-note">See <a href="/terms">Terms of Service &amp; Return Policy</a>.</p>
+  </div>
+
+  <div class="label-section">
+    <h2>Discounts &amp; Bundles</h2>
+    <p class="label-copy">Discounts may be available. <a href="/contact">Contact Wifi Squared for eligibility and terms</a>.</p>
+  </div>
+
+  <div class="label-section">
+    <h2>Affordable Connectivity Program (ACP)</h2>
+    <p class="label-copy">Participates in the ACP: <strong>No</strong></p>
+  </div>
+
+  <div class="label-section">
+    <h2>Speeds Provided with Plan</h2>
+    <div class="label-row label-row--indent">
+      <span class="label-row__label">Typical Download Speed</span>
+      <span class="label-row__value">42 Mbps</span>
+    </div>
+    <div class="label-row label-row--indent">
+      <span class="label-row__label">Typical Upload Speed</span>
+      <span class="label-row__value">9 Mbps</span>
+    </div>
+    <div class="label-row label-row--indent">
+      <span class="label-row__label">Typical Latency</span>
+      <span class="label-row__value">13 ms</span>
+    </div>
+  </div>
+
+  <div class="label-section">
+    <div class="label-row">
+      <h2 class="label-row__label">Data Included with Monthly Price</h2>
+      <span class="label-row__value">Unlimited</span>
+    </div>
+    <div class="label-row label-row--indent">
+      <span class="label-row__label">Charges for Additional Data Usage</span>
+      <span class="label-row__value">$0.00</span>
+    </div>
+  </div>
+
+  <div class="label-section">
+    <div class="label-link-row">
+      <span>Network Management</span>
+      <a href="/network-management-practices">Read our Policy</a>
+    </div>
+    <div class="label-link-row">
+      <span>Privacy</span>
+      <a href="/privacy">Read our Policy</a>
+    </div>
+  </div>
+
+  <div class="label-rule-thick" aria-hidden="true"></div>
+
+  <div class="label-section label-section--first">
+    <h2>Customer Support</h2>
+    <p class="support-copy">
+      Contact us: <a href="/contact">wifisquared.com/contact</a> /
+      <a href="tel:+18653664006">(865) 366-4006</a> /
+      <a href="mailto:connect@wifisquared.com">connect@wifisquared.com</a>
+    </p>
+  </div>
+
+  <div class="label-rule-thick" aria-hidden="true"></div>
+
+  <footer>
+    <p class="fcc-copy">Learn more about the terms used on this label by visiting the Federal Communications Commission’s Consumer Resource Center.</p>
+    <p class="fcc-url"><a href="https://www.fcc.gov/consumer">fcc.gov/consumer</a></p>
+    <p class="upi">Unique Plan Identifier: F0023081078STANDARD0000001</p>
+  </footer>
+</section>
+</div>
         <a class="btn btn-navy plan-cta" href="#contact" data-plan="Standard Connect">Check Availability</a>
       </div>
 
@@ -819,7 +1194,125 @@ footer{background:#071628;color:rgba(255,255,255,.7);padding:48px 0 28px;font-si
           <li>Professional installation provided</li>
         </ul>
         <!-- [FCC] Broadband Consumer Label slot — Performance Connect -->
-        <div class="fcc-slot" data-fcc="Performance Connect"></div>
+        <div class="plan-label-wrap" data-fcc="Performance Connect">
+<section class="broadband-label" id="performance-connect-broadband-facts"
+         aria-labelledby="performance-connect-label-title"
+         data-plan="Performance Connect" data-upi="F0023081078PERFORMANCE0001">
+  <header>
+    <h2 class="broadband-label__title" id="performance-connect-label-title">Broadband Facts</h2>
+    <p class="broadband-label__provider">Wifi Squared</p>
+    <p class="broadband-label__plan">Performance Connect</p>
+    <p class="broadband-label__type">Fixed Broadband Consumer Disclosure</p>
+    <div class="label-rule-thick" aria-hidden="true"></div>
+  </header>
+
+  <div class="label-section label-section--first">
+    <div class="label-row label-row--price">
+      <span class="label-row__label">Monthly Price</span>
+      <span class="label-row__value">$97.00</span>
+    </div>
+    <p class="label-copy">This Monthly Price is not an introductory rate.</p>
+    <p class="label-copy">This Monthly Price does not require a contract.</p>
+  </div>
+
+  <div class="label-section">
+    <h2>Additional Charges &amp; Terms</h2>
+    <p class="label-subhead">Provider Monthly Fees</p>
+    <div class="label-row label-row--indent">
+      <span class="label-row__label">None</span>
+      <span class="label-row__value">$0.00</span>
+    </div>
+
+    <p class="label-subhead">One-Time Fees at the Time of Purchase</p>
+      <div class="label-row label-row--indent">
+        <span class="label-row__label">Installation and Equipment Setup Fee</span>
+        <span class="label-row__value">$150.00</span>
+      </div>
+      <div class="label-row label-row--indent">
+        <span class="label-row__label">Optional Mesh Wi-Fi Unit</span>
+        <span class="label-row__value">$65.00 each</span>
+      </div>
+
+    <div class="label-row label-row--indent">
+      <span class="label-row__label">Early Termination Fee</span>
+      <span class="label-row__value">$0.00</span>
+    </div>
+    <div class="label-row label-row--indent">
+      <span class="label-row__label">Government Taxes</span>
+      <span class="label-row__value">Varies by Location</span>
+    </div>
+    <p class="label-note">Sales tax applies to taxable installation and equipment purchases. Monthly internet service is not taxed.</p>
+    <p class="label-note">See <a href="/terms">Terms of Service &amp; Return Policy</a>.</p>
+  </div>
+
+  <div class="label-section">
+    <h2>Discounts &amp; Bundles</h2>
+    <p class="label-copy">Discounts may be available. <a href="/contact">Contact Wifi Squared for eligibility and terms</a>.</p>
+  </div>
+
+  <div class="label-section">
+    <h2>Affordable Connectivity Program (ACP)</h2>
+    <p class="label-copy">Participates in the ACP: <strong>No</strong></p>
+  </div>
+
+  <div class="label-section">
+    <h2>Speeds Provided with Plan</h2>
+    <div class="label-row label-row--indent">
+      <span class="label-row__label">Typical Download Speed</span>
+      <span class="label-row__value">99 Mbps</span>
+    </div>
+    <div class="label-row label-row--indent">
+      <span class="label-row__label">Typical Upload Speed</span>
+      <span class="label-row__value">20 Mbps</span>
+    </div>
+    <div class="label-row label-row--indent">
+      <span class="label-row__label">Typical Latency</span>
+      <span class="label-row__value">22 ms</span>
+    </div>
+  </div>
+
+  <div class="label-section">
+    <div class="label-row">
+      <h2 class="label-row__label">Data Included with Monthly Price</h2>
+      <span class="label-row__value">Unlimited</span>
+    </div>
+    <div class="label-row label-row--indent">
+      <span class="label-row__label">Charges for Additional Data Usage</span>
+      <span class="label-row__value">$0.00</span>
+    </div>
+  </div>
+
+  <div class="label-section">
+    <div class="label-link-row">
+      <span>Network Management</span>
+      <a href="/network-management-practices">Read our Policy</a>
+    </div>
+    <div class="label-link-row">
+      <span>Privacy</span>
+      <a href="/privacy">Read our Policy</a>
+    </div>
+  </div>
+
+  <div class="label-rule-thick" aria-hidden="true"></div>
+
+  <div class="label-section label-section--first">
+    <h2>Customer Support</h2>
+    <p class="support-copy">
+      Contact us: <a href="/contact">wifisquared.com/contact</a> /
+      <a href="tel:+18653664006">(865) 366-4006</a> /
+      <a href="mailto:connect@wifisquared.com">connect@wifisquared.com</a>
+    </p>
+  </div>
+
+  <div class="label-rule-thick" aria-hidden="true"></div>
+
+  <footer>
+    <p class="fcc-copy">Learn more about the terms used on this label by visiting the Federal Communications Commission’s Consumer Resource Center.</p>
+    <p class="fcc-url"><a href="https://www.fcc.gov/consumer">fcc.gov/consumer</a></p>
+    <p class="upi">Unique Plan Identifier: F0023081078PERFORMANCE0001</p>
+  </footer>
+</section>
+</div>
         <a class="btn btn-amber plan-cta" href="#contact" data-plan="Performance Connect">Check Availability</a>
       </div>
 
@@ -846,7 +1339,125 @@ footer{background:#071628;color:rgba(255,255,255,.7);padding:48px 0 28px;font-si
           <li>Professional installation provided</li>
         </ul>
         <!-- [FCC] Broadband Consumer Label slot — Ultra Connect -->
-        <div class="fcc-slot" data-fcc="Ultra Connect"></div>
+        <div class="plan-label-wrap" data-fcc="Ultra Connect">
+<section class="broadband-label" id="ultra-connect-broadband-facts"
+         aria-labelledby="ultra-connect-label-title"
+         data-plan="Ultra Connect" data-upi="F0023081078ULTRACONNECT001">
+  <header>
+    <h2 class="broadband-label__title" id="ultra-connect-label-title">Broadband Facts</h2>
+    <p class="broadband-label__provider">Wifi Squared</p>
+    <p class="broadband-label__plan">Ultra Connect</p>
+    <p class="broadband-label__type">Fixed Broadband Consumer Disclosure</p>
+    <div class="label-rule-thick" aria-hidden="true"></div>
+  </header>
+
+  <div class="label-section label-section--first">
+    <div class="label-row label-row--price">
+      <span class="label-row__label">Monthly Price</span>
+      <span class="label-row__value">$107.00</span>
+    </div>
+    <p class="label-copy">This Monthly Price is not an introductory rate.</p>
+    <p class="label-copy">This Monthly Price does not require a contract.</p>
+  </div>
+
+  <div class="label-section">
+    <h2>Additional Charges &amp; Terms</h2>
+    <p class="label-subhead">Provider Monthly Fees</p>
+    <div class="label-row label-row--indent">
+      <span class="label-row__label">None</span>
+      <span class="label-row__value">$0.00</span>
+    </div>
+
+    <p class="label-subhead">One-Time Fees at the Time of Purchase</p>
+      <div class="label-row label-row--indent">
+        <span class="label-row__label">Installation and Equipment Setup Fee</span>
+        <span class="label-row__value">$150.00</span>
+      </div>
+      <div class="label-row label-row--indent">
+        <span class="label-row__label">Optional Mesh Wi-Fi Unit</span>
+        <span class="label-row__value">$65.00 each</span>
+      </div>
+
+    <div class="label-row label-row--indent">
+      <span class="label-row__label">Early Termination Fee</span>
+      <span class="label-row__value">$0.00</span>
+    </div>
+    <div class="label-row label-row--indent">
+      <span class="label-row__label">Government Taxes</span>
+      <span class="label-row__value">Varies by Location</span>
+    </div>
+    <p class="label-note">Sales tax applies to taxable installation and equipment purchases. Monthly internet service is not taxed.</p>
+    <p class="label-note">See <a href="/terms">Terms of Service &amp; Return Policy</a>.</p>
+  </div>
+
+  <div class="label-section">
+    <h2>Discounts &amp; Bundles</h2>
+    <p class="label-copy">Discounts may be available. <a href="/contact">Contact Wifi Squared for eligibility and terms</a>.</p>
+  </div>
+
+  <div class="label-section">
+    <h2>Affordable Connectivity Program (ACP)</h2>
+    <p class="label-copy">Participates in the ACP: <strong>No</strong></p>
+  </div>
+
+  <div class="label-section">
+    <h2>Speeds Provided with Plan</h2>
+    <div class="label-row label-row--indent">
+      <span class="label-row__label">Typical Download Speed</span>
+      <span class="label-row__value">380 Mbps</span>
+    </div>
+    <div class="label-row label-row--indent">
+      <span class="label-row__label">Typical Upload Speed</span>
+      <span class="label-row__value">99 Mbps</span>
+    </div>
+    <div class="label-row label-row--indent">
+      <span class="label-row__label">Typical Latency</span>
+      <span class="label-row__value">18 ms</span>
+    </div>
+  </div>
+
+  <div class="label-section">
+    <div class="label-row">
+      <h2 class="label-row__label">Data Included with Monthly Price</h2>
+      <span class="label-row__value">Unlimited</span>
+    </div>
+    <div class="label-row label-row--indent">
+      <span class="label-row__label">Charges for Additional Data Usage</span>
+      <span class="label-row__value">$0.00</span>
+    </div>
+  </div>
+
+  <div class="label-section">
+    <div class="label-link-row">
+      <span>Network Management</span>
+      <a href="/network-management-practices">Read our Policy</a>
+    </div>
+    <div class="label-link-row">
+      <span>Privacy</span>
+      <a href="/privacy">Read our Policy</a>
+    </div>
+  </div>
+
+  <div class="label-rule-thick" aria-hidden="true"></div>
+
+  <div class="label-section label-section--first">
+    <h2>Customer Support</h2>
+    <p class="support-copy">
+      Contact us: <a href="/contact">wifisquared.com/contact</a> /
+      <a href="tel:+18653664006">(865) 366-4006</a> /
+      <a href="mailto:connect@wifisquared.com">connect@wifisquared.com</a>
+    </p>
+  </div>
+
+  <div class="label-rule-thick" aria-hidden="true"></div>
+
+  <footer>
+    <p class="fcc-copy">Learn more about the terms used on this label by visiting the Federal Communications Commission’s Consumer Resource Center.</p>
+    <p class="fcc-url"><a href="https://www.fcc.gov/consumer">fcc.gov/consumer</a></p>
+    <p class="upi">Unique Plan Identifier: F0023081078ULTRACONNECT001</p>
+  </footer>
+</section>
+</div>
         <a class="btn btn-navy plan-cta" href="#contact" data-plan="Ultra Connect">Check Availability</a>
       </div>
 
@@ -883,7 +1494,125 @@ footer{background:#071628;color:rgba(255,255,255,.7);padding:48px 0 28px;font-si
             <li>Professional installation provided</li>
           </ul>
           <!-- [FCC] Broadband Consumer Label slot — Fiber Connect -->
-          <div class="fcc-slot" data-fcc="Fiber Connect"></div>
+          <div class="plan-label-wrap" data-fcc="Fiber Connect">
+<section class="broadband-label" id="fiber-connect-broadband-facts"
+         aria-labelledby="fiber-connect-label-title"
+         data-plan="Fiber Connect" data-upi="F0023081078FIBERCONNECT000">
+  <header>
+    <h2 class="broadband-label__title" id="fiber-connect-label-title">Broadband Facts</h2>
+    <p class="broadband-label__provider">Wifi Squared</p>
+    <p class="broadband-label__plan">Fiber Connect</p>
+    <p class="broadband-label__type">Fixed Broadband Consumer Disclosure</p>
+    <div class="label-rule-thick" aria-hidden="true"></div>
+  </header>
+
+  <div class="label-section label-section--first">
+    <div class="label-row label-row--price">
+      <span class="label-row__label">Monthly Price</span>
+      <span class="label-row__value">$75.00</span>
+    </div>
+    <p class="label-copy">This Monthly Price is not an introductory rate.</p>
+    <p class="label-copy">This Monthly Price does not require a contract.</p>
+  </div>
+
+  <div class="label-section">
+    <h2>Additional Charges &amp; Terms</h2>
+    <p class="label-subhead">Provider Monthly Fees</p>
+    <div class="label-row label-row--indent">
+      <span class="label-row__label">None</span>
+      <span class="label-row__value">$0.00</span>
+    </div>
+
+    <p class="label-subhead">One-Time Fees at the Time of Purchase</p>
+      <div class="label-row label-row--indent">
+        <span class="label-row__label">Installation and Equipment Setup Fee</span>
+        <span class="label-row__value">$150.00</span>
+      </div>
+      <div class="label-row label-row--indent">
+        <span class="label-row__label">Optional Mesh Wi-Fi Unit</span>
+        <span class="label-row__value">$65.00 each</span>
+      </div>
+
+    <div class="label-row label-row--indent">
+      <span class="label-row__label">Early Termination Fee</span>
+      <span class="label-row__value">$0.00</span>
+    </div>
+    <div class="label-row label-row--indent">
+      <span class="label-row__label">Government Taxes</span>
+      <span class="label-row__value">Varies by Location</span>
+    </div>
+    <p class="label-note">Sales tax applies to taxable installation and equipment purchases. Monthly internet service is not taxed.</p>
+    <p class="label-note">See <a href="/terms">Terms of Service &amp; Return Policy</a>.</p>
+  </div>
+
+  <div class="label-section">
+    <h2>Discounts &amp; Bundles</h2>
+    <p class="label-copy">Discounts may be available. <a href="/contact">Contact Wifi Squared for eligibility and terms</a>.</p>
+  </div>
+
+  <div class="label-section">
+    <h2>Affordable Connectivity Program (ACP)</h2>
+    <p class="label-copy">Participates in the ACP: <strong>No</strong></p>
+  </div>
+
+  <div class="label-section">
+    <h2>Speeds Provided with Plan</h2>
+    <div class="label-row label-row--indent">
+      <span class="label-row__label">Typical Download Speed</span>
+      <span class="label-row__value">475 Mbps</span>
+    </div>
+    <div class="label-row label-row--indent">
+      <span class="label-row__label">Typical Upload Speed</span>
+      <span class="label-row__value">400 Mbps</span>
+    </div>
+    <div class="label-row label-row--indent">
+      <span class="label-row__label">Typical Latency</span>
+      <span class="label-row__value">10 ms</span>
+    </div>
+  </div>
+
+  <div class="label-section">
+    <div class="label-row">
+      <h2 class="label-row__label">Data Included with Monthly Price</h2>
+      <span class="label-row__value">Unlimited</span>
+    </div>
+    <div class="label-row label-row--indent">
+      <span class="label-row__label">Charges for Additional Data Usage</span>
+      <span class="label-row__value">$0.00</span>
+    </div>
+  </div>
+
+  <div class="label-section">
+    <div class="label-link-row">
+      <span>Network Management</span>
+      <a href="/network-management-practices">Read our Policy</a>
+    </div>
+    <div class="label-link-row">
+      <span>Privacy</span>
+      <a href="/privacy">Read our Policy</a>
+    </div>
+  </div>
+
+  <div class="label-rule-thick" aria-hidden="true"></div>
+
+  <div class="label-section label-section--first">
+    <h2>Customer Support</h2>
+    <p class="support-copy">
+      Contact us: <a href="/contact">wifisquared.com/contact</a> /
+      <a href="tel:+18653664006">(865) 366-4006</a> /
+      <a href="mailto:connect@wifisquared.com">connect@wifisquared.com</a>
+    </p>
+  </div>
+
+  <div class="label-rule-thick" aria-hidden="true"></div>
+
+  <footer>
+    <p class="fcc-copy">Learn more about the terms used on this label by visiting the Federal Communications Commission’s Consumer Resource Center.</p>
+    <p class="fcc-url"><a href="https://www.fcc.gov/consumer">fcc.gov/consumer</a></p>
+    <p class="upi">Unique Plan Identifier: F0023081078FIBERCONNECT000</p>
+  </footer>
+</section>
+</div>
           <a class="btn btn-navy plan-cta" href="#contact" data-plan="Fiber Connect">Check Availability</a>
         </div>
       </div>
@@ -914,11 +1643,132 @@ footer{background:#071628;color:rgba(255,255,255,.7);padding:48px 0 28px;font-si
             <li>Unlimited data</li>
             <li>Use at home or on the go</li>
             <li>Compatible cellular router options</li>
+            <li>Priced per active service line — <a href="/mobile-coverage">see coverage &amp; line details</a></li>
             <li>Professional setup when available</li>
             <li>Coverage varies by location</li>
           </ul>
           <!-- [FCC] Broadband Consumer Label slot — Mobile Connect -->
-          <div class="fcc-slot" data-fcc="Mobile Connect"></div>
+          <div class="plan-label-wrap" data-fcc="Mobile Connect">
+<section class="broadband-label" id="mobile-connect-broadband-facts"
+         aria-labelledby="mobile-connect-label-title"
+         data-plan="Mobile Connect" data-upi="M0023081078MOBILECONNECT00">
+  <header>
+    <h2 class="broadband-label__title" id="mobile-connect-label-title">Broadband Facts</h2>
+    <p class="broadband-label__provider">Wifi Squared</p>
+    <p class="broadband-label__plan">Mobile Connect</p>
+    <p class="broadband-label__type">Mobile Broadband Consumer Disclosure</p>
+    <div class="label-rule-thick" aria-hidden="true"></div>
+  </header>
+
+  <div class="label-section label-section--first">
+    <div class="label-row label-row--price">
+      <span class="label-row__label">Monthly Price</span>
+      <span class="label-row__value">$97.00</span>
+    </div>
+    <p class="label-copy">This Monthly Price is not an introductory rate.</p>
+    <p class="label-copy">This Monthly Price does not require a contract.</p>
+  </div>
+
+  <div class="label-section">
+    <h2>Additional Charges &amp; Terms</h2>
+    <p class="label-subhead">Provider Monthly Fees</p>
+    <div class="label-row label-row--indent">
+      <span class="label-row__label">None</span>
+      <span class="label-row__value">$0.00</span>
+    </div>
+
+    <p class="label-subhead">One-Time Fees at the Time of Purchase</p>
+      <div class="label-row label-row--indent">
+        <span class="label-row__label">Wifi Squared-provided Device and Setup</span>
+        <span class="label-row__value">$150.00</span>
+      </div>
+      <div class="label-row label-row--indent">
+        <span class="label-row__label">Approved Customer-Owned Compatible Device</span>
+        <span class="label-row__value">$0.00</span>
+      </div>
+
+    <div class="label-row label-row--indent">
+      <span class="label-row__label">Early Termination Fee</span>
+      <span class="label-row__value">$0.00</span>
+    </div>
+    <div class="label-row label-row--indent">
+      <span class="label-row__label">Government Taxes</span>
+      <span class="label-row__value">Varies by Location</span>
+    </div>
+    <p class="label-note">Sales tax applies when a Wifi Squared-provided device is purchased. Monthly internet service is not taxed.</p>
+    <p class="label-note">See <a href="/terms">Terms of Service &amp; Return Policy</a>.</p>
+  </div>
+
+  <div class="label-section">
+    <h2>Discounts &amp; Bundles</h2>
+    <p class="label-copy">Discounts may be available. <a href="/contact">Contact Wifi Squared for eligibility and terms</a>.</p>
+  </div>
+
+  <div class="label-section">
+    <h2>Affordable Connectivity Program (ACP)</h2>
+    <p class="label-copy">Participates in the ACP: <strong>No</strong></p>
+  </div>
+
+  <div class="label-section">
+    <h2>Speeds Provided with Plan</h2>
+    <div class="label-row label-row--indent">
+      <span class="label-row__label">Typical Download Speed</span>
+      <span class="label-row__value">100 Mbps</span>
+    </div>
+    <div class="label-row label-row--indent">
+      <span class="label-row__label">Typical Upload Speed</span>
+      <span class="label-row__value">24 Mbps</span>
+    </div>
+    <div class="label-row label-row--indent">
+      <span class="label-row__label">Typical Latency</span>
+      <span class="label-row__value">45 ms</span>
+    </div>
+  </div>
+
+  <div class="label-section">
+    <div class="label-row">
+      <h2 class="label-row__label">Data Included with Monthly Price</h2>
+      <span class="label-row__value">Unlimited</span>
+    </div>
+    <div class="label-row label-row--indent">
+      <span class="label-row__label">Charges for Additional Data Usage</span>
+      <span class="label-row__value">$0.00</span>
+    </div>
+      <p class="label-note">Unlimited data. No high-speed data threshold, additional-data charge, or enforced video-resolution restriction. Wifi Squared selects an available carrier based on the service location. Mobile Connect does not include cellular voice or SMS. Bring-your-own-device compatibility must be approved before activation.</p>
+      <p class="label-note"><a href="/mobile-coverage">Review Mobile Connect coverage information</a>.</p>
+  </div>
+
+  <div class="label-section">
+    <div class="label-link-row">
+      <span>Network Management</span>
+      <a href="/network-management-practices">Read our Policy</a>
+    </div>
+    <div class="label-link-row">
+      <span>Privacy</span>
+      <a href="/privacy">Read our Policy</a>
+    </div>
+  </div>
+
+  <div class="label-rule-thick" aria-hidden="true"></div>
+
+  <div class="label-section label-section--first">
+    <h2>Customer Support</h2>
+    <p class="support-copy">
+      Contact us: <a href="/contact">wifisquared.com/contact</a> /
+      <a href="tel:+18653664006">(865) 366-4006</a> /
+      <a href="mailto:connect@wifisquared.com">connect@wifisquared.com</a>
+    </p>
+  </div>
+
+  <div class="label-rule-thick" aria-hidden="true"></div>
+
+  <footer>
+    <p class="fcc-copy">Learn more about the terms used on this label by visiting the Federal Communications Commission’s Consumer Resource Center.</p>
+    <p class="fcc-url"><a href="https://www.fcc.gov/consumer">fcc.gov/consumer</a></p>
+    <p class="upi">Unique Plan Identifier: M0023081078MOBILECONNECT00</p>
+  </footer>
+</section>
+</div>
           <a class="btn btn-navy plan-cta" href="#contact" data-plan="Mobile Connect">Learn More</a>
         </div>
       </div>
@@ -931,7 +1781,7 @@ footer{background:#071628;color:rgba(255,255,255,.7);padding:48px 0 28px;font-si
       <a class="btn btn-navy plan-cta" href="#contact" data-plan="Business or custom service">Discuss Business Internet</a>
     </div>
 
-    <p class="plan-disclaimer">Available plans and speeds vary by address, network type, signal conditions, network capacity, and equipment. A one-time $150 installation and equipment fee applies to every plan. Applicable sales tax is added to this fee and to any mesh Wi-Fi units purchased.</p>
+    <p class="plan-disclaimer">Available plans and speeds vary by address, network type, signal conditions, network capacity, and equipment. A one-time $150 Installation and Equipment Setup Fee applies to every plan, covering professional installation and provider-owned network equipment. A customer-provided or separately purchased Wi-Fi router is required; optional mesh Wi-Fi units are $65 each. For Mobile Connect the fee is $150 with a Wifi Squared-provided device, or $0 with an approved customer-owned compatible device. Applicable sales tax is added to this fee and to any equipment purchased; monthly internet service is not taxed.</p>
   </div>
 </section>
 
@@ -1048,7 +1898,7 @@ footer{background:#071628;color:rgba(255,255,255,.7);padding:48px 0 28px;font-si
       </details>
       <details>
         <summary>How much does your internet cost?</summary>
-        <p>Monthly home internet plans currently start at $60. A one-time $150 installation and equipment fee applies to every plan. Applicable sales tax is added to this fee and to any mesh Wi-Fi units purchased. Available plans and speeds depend on your address and network type.</p>
+        <p>Monthly home internet plans currently start at $60. A one-time $150 Installation and Equipment Setup Fee applies to every plan, covering professional installation and provider-owned network equipment. A customer-provided or separately purchased Wi-Fi router is required; optional mesh Wi-Fi units are $65 each. For Mobile Connect the fee is $150 with a Wifi Squared-provided device, or $0 with an approved customer-owned compatible device. Applicable sales tax is added to this fee and to any equipment purchased; monthly internet service is not taxed. Available plans and speeds depend on your address and network type.</p>
       </details>
       <details>
         <summary>Do you have data caps or contracts?</summary>
@@ -1093,21 +1943,21 @@ footer{background:#071628;color:rgba(255,255,255,.7);padding:48px 0 28px;font-si
         <div class="card-body">
           <h3>Fixed Wireless vs. Traditional Satellite vs. Starlink</h3>
           <p>An honest comparison for rural East Tennessee — latency, price, weather, and where each option genuinely wins.</p>
-          <a class="card-link" href="fixed-wireless-vs-satellite-vs-starlink.html">Read the comparison →</a>
+          <a class='card-link' href='/fixed-wireless-vs-satellite-vs-starlink'>Read the comparison →</a>
         </div>
       </div>
       <div class="card reveal">
         <div class="card-body">
           <h3>Why Is My Internet Slow?</h3>
           <p>The five things our techs check first — try them yourself before you ever pick up the phone.</p>
-          <a class="card-link" href="why-is-my-internet-slow.html">Read the checklist →</a>
+          <a class='card-link' href='/why-is-my-internet-slow'>Read the checklist →</a>
         </div>
       </div>
       <div class="card reveal">
         <div class="card-body">
           <h3>How Much Speed Do You Actually Need?</h3>
           <p>What streaming, gaming, and working from home really use — and when the cheaper plan is honestly plenty.</p>
-          <a class="card-link" href="how-much-internet-speed-do-you-need.html">Find your fit →</a>
+          <a class='card-link' href='/how-much-internet-speed-do-you-need'>Find your fit →</a>
         </div>
       </div>
     </div>
@@ -1207,6 +2057,11 @@ footer{background:#071628;color:rgba(255,255,255,.7);padding:48px 0 28px;font-si
         <h4>Contact</h4>
         <a href="tel:+18653664006">Call or text: (865) 366-4006</a>
         <a href="mailto:connect@wifisquared.com">Email: connect@wifisquared.com</a>
+        <a href='/contact'>Contact Us</a>
+        <!-- [13] CUSTOMER LOGIN -->
+        <a href="https://wifi2.unmsapp.com/crm/login" target="_blank" rel="noopener">Customer Login</a>
+        <!-- [14] NETWORK STATUS — uncomment with the nav copy. -->
+        <!-- <a href="NETWORK_STATUS_URL">Network Status</a> -->
         <!-- [12] NEWSLETTER: opens the MailerLite pop-up form (ID BFZAK8).
              The form ID lives in data-ml-form and is bound by the MailerLite
              block at the bottom of this file — NOT an inline onclick, because
@@ -1217,7 +2072,7 @@ footer{background:#071628;color:rgba(255,255,255,.7);padding:48px 0 28px;font-si
     </div>
     <div class="foot-bottom">
       <span>© 2026 Wifi Squared, LLC. All rights reserved.</span>
-      <span><a href="privacy.html" style="text-decoration:underline">Privacy Policy</a> &nbsp;·&nbsp; <a href="terms.html" style="text-decoration:underline">Terms of Service &amp; Return Policy</a></span>
+      <span><a href='/privacy' style='text-decoration:underline'>Privacy Policy</a> &nbsp;·&nbsp; <a href='/terms' style='text-decoration:underline'>Terms of Service &amp; Return Policy</a> &nbsp;·&nbsp; <a href='/network-management-practices' style='text-decoration:underline'>Network Management Practices</a></span>
       <span>Site by <a href="https://smokymountainwebco.com" style="color:var(--amber)">Smoky Mountain Web Co.</a></span>
     </div>
   </div>
