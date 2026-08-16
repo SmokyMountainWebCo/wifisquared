@@ -170,15 +170,19 @@
                               - The tower is not an East Tennessee ridge. Fine
                                 as a generic install shot, but one of our own
                                 tower sites would be stronger and is free.
-    [14] Network Status   — REQUESTED but NOT SHIPPED: there is no verified URL.
-                            Markup is in place and commented out in two spots
-                            (nav + homepage footer); uncomment both and fill in
-                            NETWORK_STATUS_URL. Ask Jermaine first whether this
-                            is a public page or the UISP outage view — the UISP
-                            one lives BEHIND the client login, which would make
-                            it unlinkable from a public nav. A dead status link
-                            is worst exactly when it gets used, during an
-                            outage, so it stays out until the URL is confirmed.
+    [14] Network Status   — SHIPPED 20260814. URL confirmed as the public
+                            UptimeRobot status page,
+                            stats.uptimerobot.com/rnoqpirZqN — NOT the UISP
+                            outage view, which sits behind the client login and
+                            could not be linked from a public nav. Live in two
+                            spots: the nav (mobile drawer only, .nav-status
+                            hides it on desktop) and the homepage footer's
+                            Contact column, below Get email updates. Both open
+                            in a new tab so an outage check does not lose the
+                            page. Also in the compact footer on every interior
+                            page, and in the mobile-coverage link list. Only
+                            404.html is without it — that footer carries just
+                            Privacy and Terms by design.
     [16] Favicon          — ADDED 20260731 at Jermaine's request. Until now no
                             page on the site declared one at all, so every tab
                             showed the browser's blank page icon.
@@ -289,7 +293,11 @@ h2{font-size:clamp(1.7rem,3.4vw,2.4rem);margin-bottom:14px}
   linear-gradient(100deg,rgba(10,31,60,.95) 30%,rgba(10,31,60,.55) 70%,rgba(10,31,60,.35)),
   linear-gradient(160deg,#0A1F3C,#173a6b 60%,#1e4d8f)}
 .hero-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.38;mix-blend-mode:luminosity}
-.hero-in{position:relative;padding:96px 0 64px;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+/* Vertical padding only: .hero-in also carries .container, which supplies the
+   22px side gutter. A padding shorthand here reset that to 0 and let the
+   headline and the availability card run to the screen edge — worst on phones,
+   where the single-column stack has no centring margin to hide it. */
+.hero-in{position:relative;padding-top:96px;padding-bottom:64px;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
 .hero h1{font-size:clamp(2.1rem,4.6vw,3.3rem);margin-bottom:18px}
 .hero p{color:rgba(255,255,255,.82);max-width:520px;margin-bottom:28px}
 .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px}
@@ -301,7 +309,7 @@ h2{font-size:clamp(1.7rem,3.4vw,2.4rem);margin-bottom:14px}
 .avail-card input{width:100%;padding:14px 16px;border:1.5px solid var(--line);border-radius:10px;font-family:var(--body);font-size:.95rem;margin-bottom:12px}
 .avail-card .btn{width:100%}
 .avail-note{font-size:.78rem;color:var(--mute);margin-top:12px;text-align:center}
-@media(max-width:860px){.hero-in{grid-template-columns:1fr;padding:64px 0 48px}}
+@media(max-width:860px){.hero-in{grid-template-columns:1fr;padding-top:64px;padding-bottom:48px}}
 
 /* ---------- STATS ---------- */
 .stats{background:var(--navy);color:var(--white);border-top:1px solid rgba(255,255,255,.08);padding:34px 0}
@@ -710,9 +718,9 @@ footer{background:#071628;color:rgba(255,255,255,.7);padding:48px 0 28px;font-si
       <a href="#blog">Blog</a>
       <!-- [13] CUSTOMER LOGIN — Ubiquiti UISP CRM client portal. -->
       <a class="nav-login" href="https://wifi2.unmsapp.com/crm/login" target="_blank" rel="noopener">Login</a>
-      <!-- [14] NETWORK STATUS — no verified URL yet. Uncomment BOTH this and
-           the footer copy once Jermaine confirms the address. -->
-      <!-- <a class="nav-status" href="NETWORK_STATUS_URL">Network Status</a> -->
+      <!-- [14] NETWORK STATUS — public UptimeRobot status page. Hidden on
+           desktop by .nav-status; the footer carries it there. -->
+      <a class="nav-status" href="https://stats.uptimerobot.com/rnoqpirZqN" target="_blank" rel="noopener">Network Status</a>
       <!-- [1] EDIT PHONE -->
       <a class="nav-phone" href="tel:+18653664006">(865) 366-4006</a>
       <!-- mobile-only call / text pair -->
@@ -2060,14 +2068,14 @@ footer{background:#071628;color:rgba(255,255,255,.7);padding:48px 0 28px;font-si
         <a href='/contact'>Contact Us</a>
         <!-- [13] CUSTOMER LOGIN -->
         <a href="https://wifi2.unmsapp.com/crm/login" target="_blank" rel="noopener">Customer Login</a>
-        <!-- [14] NETWORK STATUS — uncomment with the nav copy. -->
-        <!-- <a href="NETWORK_STATUS_URL">Network Status</a> -->
         <!-- [12] NEWSLETTER: opens the MailerLite pop-up form (ID BFZAK8).
              The form ID lives in data-ml-form and is bound by the MailerLite
              block at the bottom of this file — NOT an inline onclick, because
              Netlify's HTML post-processing re-serializes attributes and would
              have to escape the quotes inside a JS handler. -->
         <a class="ml-onclick-form" href="javascript:void(0)" data-ml-form="BFZAK8">Get email updates</a>
+        <!-- [14] NETWORK STATUS — public UptimeRobot status page. -->
+        <a href="https://stats.uptimerobot.com/rnoqpirZqN" target="_blank" rel="noopener">Network Status</a>
       </div>
     </div>
     <div class="foot-bottom">
