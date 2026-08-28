@@ -2009,6 +2009,16 @@ footer{background:#071628;color:rgba(255,255,255,.7);padding:48px 0 28px;font-si
             <div><label for="ln">Last name</label><input id="ln" name="last_name" autocomplete="family-name" required></div>
             <div><label for="ph">Phone</label><input id="ph" name="phone" type="tel" autocomplete="tel" required></div>
             <div><label for="em">Email</label><input id="em" name="email" type="email" autocomplete="email" required></div>
+            <!-- Same field name as the contact page's "Best Way to Contact" so
+                 both forms' Formspree emails show the answer under one label. -->
+            <div class="full"><label for="best">How would you like to be contacted?</label>
+              <select id="best" name="best_way_to_contact" required>
+                <option value="">Please choose…</option>
+                <option>Phone Call</option>
+                <option>Text Message</option>
+                <option>Email</option>
+              </select>
+            </div>
             <div class="full"><label for="addr-copy">Service address</label><input id="addr-copy" name="address" autocomplete="street-address" required></div>
             <div class="full"><label for="pt">Property type</label>
               <select id="pt" name="property_type">
