@@ -22,3 +22,18 @@
 # ANY RESTRICTIONS EXPRESSED VIA CONTENT SIGNALS ARE EXPRESS RESERVATIONS OF
 # RIGHTS UNDER ARTICLE 4 OF THE EUROPEAN UNION DIRECTIVE 2019/790 ON COPYRIGHT
 # AND RELATED RIGHTS IN THE DIGITAL SINGLE MARKET.
+
+# ============================================================
+# Directives. The content signals above are made explicit here:
+# search and AI-answer grounding (ai-input) are both granted, so
+# Google AI Overviews / AI Mode and similar answer engines may
+# cite and summarize the site. ai-train is deliberately left
+# unset. /internal/ holds unpublished drafts (see _redirects).
+# ============================================================
+
+User-Agent: *
+Content-Signal: search=yes, ai-input=yes
+Allow: /
+Disallow: /internal/
+
+Sitemap: https://wifisquared.com/sitemap.xml
