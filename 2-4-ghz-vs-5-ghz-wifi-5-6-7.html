@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2.4 GHz vs. 5 GHz — and WiFi 5 vs. 6 vs. 7 — in Plain English | Wifi Squared</title>
+<!-- Favicon — the nav's animated mark frozen at full signal. Absolute paths so
+     /broadband-labels/ resolves them too. .ico first for browsers that ignore
+     SVG icons; SVG second so the ones that support it win on sharpness. -->
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0A1F3C">
+<meta name="description" content="What the 2.4 GHz and 5 GHz networks on your router actually do, which band to connect to, and whether a WiFi 5, WiFi 6, or WiFi 7 router is worth the money for a rural East Tennessee home.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "2.4 GHz vs. 5 GHz — and WiFi 5 vs. 6 vs. 7 — Explained in Plain English",
+  "description": "What the 2.4 GHz and 5 GHz networks on your router actually do, which band to connect to, and whether a WiFi 5, WiFi 6, or WiFi 7 router is worth the money for a rural East Tennessee home.",
+  "datePublished": "2026-09-02",
+  "author": {"@type": "Organization", "name": "Wifi Squared"},
+  "publisher": {"@type": "Organization", "name": "Wifi Squared"}
+}
+</script>
+
+<!-- FAQPage schema mirrors the visible FAQ section below, word for word, so the
+     questions can surface as rich results. Keep the two in sync when editing. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Should I connect to 2.4 GHz or 5 GHz WiFi?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Use 5 GHz when the device is in the same room or one room away from the router — it is much faster. Use 2.4 GHz for devices that are far away, behind several walls, or outdoors, and for most smart-home gear. If your router shows one combined network name, it picks for you automatically."}
+    },
+    {
+      "@type": "Question",
+      "name": "Why does my WiFi show two network names?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Your router is broadcasting its two radios — 2.4 GHz and 5 GHz — as separate networks, often with names ending in -2G and -5G. Both reach the same internet connection. Newer routers merge them into a single name and steer each device to the better band on their own."}
+    },
+    {
+      "@type": "Question",
+      "name": "Is a WiFi 6 router worth upgrading to?",
+      "acceptedAnswer": {"@type": "Answer", "text": "If your router is WiFi 4 or older, or you have a busy household with lots of phones, TVs, and smart devices, yes — WiFi 6 handles many devices at once far better. If you already own a solid WiFi 5 router and your speeds feel fine, the upgrade can usually wait."}
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need a WiFi 7 router?",
+      "acceptedAnswer": {"@type": "Answer", "text": "For most homes, not yet. WiFi 7's headline speeds outrun what most devices and most internet plans can use today. Buy WiFi 7 when you are replacing a router anyway and the price difference is small — not as a fix for slow internet."}
+    },
+    {
+      "@type": "Question",
+      "name": "Will a new router make my internet faster?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Only if the router — not your internet plan — is the bottleneck. A new router fixes weak signal in far rooms and congestion from many devices, but it cannot make a 50 Mbps plan deliver more than 50 Mbps. Run a speed test next to the router first: if it matches your plan there but not elsewhere, the router or its placement is the problem."}
+    }
+  ]
+}
+</script>
+
+<style>
+:root{--navy:#0A1F3C;--navy-2:#122B4F;--sky:#2E7CF6;--sky-soft:#EAF2FE;--amber:#F6A82C;--ink:#182234;--mute:#5B6B84;--line:#DCE5F2;--white:#FFFFFF;--radius:14px;--shadow:0 10px 30px rgba(10,31,60,.10);--display:'Space Grotesk',sans-serif;--body:'Inter',sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--ink);background:var(--white);line-height:1.7;font-size:16.5px}
+a{color:var(--sky);text-decoration:none}
+.container{max-width:760px;margin:0 auto;padding:0 22px}
+.nav{position:sticky;top:0;z-index:50;background:rgba(10,31,60,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:70px;max-width:1140px;margin:0 auto;padding:0 22px}
+.logo{font-family:var(--display);font-weight:700;font-size:1.35rem;color:var(--white)}
+.sq{color:var(--amber);font-weight:700}
+.logo .sq{font-size:1rem;vertical-align:super}
+.nav a.back{color:rgba(255,255,255,.85);font-size:.92rem;font-weight:500}
+.nav a.back:hover{color:#fff}
+article{padding:64px 0 40px}
+.crumb{font-size:.85rem;color:var(--mute);margin-bottom:22px}
+.crumb a{color:var(--mute)}
+.crumb a:hover{color:var(--sky)}
+h1{font-family:var(--display);font-size:clamp(1.8rem,4vw,2.5rem);line-height:1.15;letter-spacing:-.01em;margin-bottom:14px}
+.meta{font-size:.85rem;color:var(--mute);margin-bottom:36px;padding-bottom:22px;border-bottom:1px solid var(--line)}
+h2{font-family:var(--display);font-size:1.4rem;margin:38px 0 12px}
+p{margin-bottom:18px}
+p.lede{font-size:1.1rem;color:var(--mute)}
+ul{margin:0 0 18px 22px}
+li{margin-bottom:8px}
+table{width:100%;border-collapse:collapse;margin:24px 0;font-size:.9rem}
+th{font-family:var(--display);text-align:left;background:var(--navy);color:#fff;padding:10px 14px}
+td{padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:nth-child(even) td{background:var(--sky-soft)}
+.faq details{border:1px solid var(--line);border-radius:10px;margin-bottom:10px;padding:14px 18px;background:#fff}
+.faq summary{font-family:var(--display);font-weight:600;cursor:pointer}
+.faq details p{margin:10px 0 2px;color:var(--mute)}
+.cta{background:var(--navy);color:#fff;border-radius:var(--radius);padding:32px;margin:44px 0;text-align:center}
+.cta h2{margin-top:0;color:#fff}
+.cta p{color:rgba(255,255,255,.8)}
+.btn{display:inline-block;font-family:var(--display);font-weight:600;font-size:.95rem;padding:14px 26px;border-radius:10px;background:var(--amber);color:var(--navy)}
+.more{border-top:1px solid var(--line);padding:28px 0 56px}
+.more h3{font-family:var(--display);font-size:1.05rem;margin-bottom:12px}
+.more a{display:block;padding:6px 0}
+footer{background:#071628;color:rgba(255,255,255,.6);padding:28px 0;font-size:.82rem;text-align:center}
+footer a{color:var(--amber)}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class='logo' href='/'>Wifi<span class="sq">²</span></a>
+    <a class='back' href='/'>← Back to site</a>
+  </div>
+</nav>
+
+<article>
+  <div class="container">
+    <div class="crumb"><a href='/'>Home</a> / Blog</div>
+    <h1>2.4 GHz vs. 5 GHz — and WiFi 5 vs. 6 vs. 7 — Explained in Plain English</h1>
+    <div class="meta">By the Wifi Squared team · September 2, 2026 · 5 min read</div>
+
+    <p class="lede">Open your phone's WiFi settings and you might see two versions of your home network — one ending in "2G", one in "5G". Walk into a store for a new router and the boxes shout WiFi 6, 6E, and 7 at you. None of it is explained anywhere. Here's what all of it actually means, and what's worth paying for.</p>
+
+    <h2>First, untangle two things that sound alike</h2>
+    <p>The <b>band</b> (2.4 GHz or 5 GHz) is the radio frequency your router talks on. The <b>WiFi generation</b> (WiFi 5, 6, 7) is how modern the technology is. They're independent — a brand-new WiFi 7 router still broadcasts on the same 2.4 GHz band your 2010 router used. And neither has anything to do with "5G" cell service, despite the identical name. Confusing? Absolutely. Blame the people who name these things.</p>
+
+    <h2>2.4 GHz vs. 5 GHz: range vs. speed</h2>
+    <p>Think of the two bands like AM and FM radio. Lower frequencies travel farther and punch through obstacles better; higher frequencies carry more information but fade faster.</p>
+    <table>
+      <tr><th></th><th>2.4 GHz</th><th>5 GHz</th></tr>
+      <tr><td><b>Speed</b></td><td>Slower</td><td>Much faster</td></tr>
+      <tr><td><b>Range</b></td><td>Longer — through walls and floors</td><td>Shorter — weakens fast through walls</td></tr>
+      <tr><td><b>Interference</b></td><td>Crowded: microwaves, baby monitors, neighbors' networks all live here</td><td>Much cleaner airspace</td></tr>
+      <tr><td><b>Best for</b></td><td>Far rooms, outdoor cameras, smart plugs and thermostats, the shop or barn</td><td>TVs, laptops, phones, game consoles near the router</td></tr>
+    </table>
+    <p>The practical rule: <b>5 GHz for the devices doing heavy work near the router, 2.4 GHz for everything far away.</b> This matters extra in East Tennessee homes — log walls, stone fireplaces, and metal roofs eat 5 GHz signal for breakfast. If the bedroom TV two floors up keeps buffering on the "5G" network, switching it to the 2.4 GHz one often fixes it on the spot.</p>
+    <p>Many newer routers broadcast a single network name and quietly steer each device to the better band. If yours does that, great — one less thing to think about.</p>
+
+    <h2>WiFi 5 vs. WiFi 6 vs. WiFi 7</h2>
+    <p>These are generations of the technology, the way phones have generations. Each one is faster on paper, but the paper number isn't the interesting part:</p>
+    <table>
+      <tr><th>Generation</th><th>Year</th><th>What it actually gave you</th></tr>
+      <tr><td><b>WiFi 5</b> (802.11ac)</td><td>2014</td><td>Made 5 GHz fast. Still perfectly serviceable for most homes today.</td></tr>
+      <tr><td><b>WiFi 6 / 6E</b> (802.11ax)</td><td>2019 / 2021</td><td>The real win: handling <i>lots of devices at once</i> without choking. 6E added a third band (6 GHz) — very fast, very short range.</td></tr>
+      <tr><td><b>WiFi 7</b> (802.11be)</td><td>2024</td><td>Can use multiple bands simultaneously; huge top speeds. Genuinely impressive, genuinely ahead of what most homes can use.</td></tr>
+    </table>
+    <p>Here's the honest read. WiFi 6's device-juggling is the upgrade most families actually feel — the average home now has 20-plus connected things between phones, TVs, watches, cameras, and thermostats, and older routers visibly struggle with that. WiFi 7's speed, meanwhile, mostly outruns both today's devices and today's internet plans. If you're buying a router in 2026, get at least WiFi 6; get WiFi 7 if the price gap is small, not because you expect a miracle.</p>
+
+    <h2>The part nobody selling routers will tell you</h2>
+    <p>Your WiFi and your internet plan are two different speed limits, and you're always governed by the lower one. A WiFi 7 router on a <a href='/#pricing'>50 Mbps plan</a> delivers... 50 Mbps. It cannot manufacture bandwidth. The reverse is also true: a fast plan through a decade-old router in a closet at the far end of the house will feel slow in every room.</p>
+    <p>The two-minute diagnosis: run a speed test standing next to the router. If it matches your plan there but drops off in the back bedroom, your problem is WiFi — placement, band choice, or an old router — and our <a href='/why-is-my-internet-slow'>slow-internet checklist</a> walks through the fixes, including when a $65 mesh unit is the cheap answer. If it's slow even beside the router, the plan itself may be the ceiling, and the fix is <a href='/how-much-internet-speed-do-you-need'>a plan that fits your household</a>, not new hardware.</p>
+
+    <h2>Quick answers</h2>
+    <div class="faq">
+      <details>
+        <summary>Should I connect to 2.4 GHz or 5 GHz WiFi?</summary>
+        <p>Use 5 GHz when the device is in the same room or one room away from the router — it is much faster. Use 2.4 GHz for devices that are far away, behind several walls, or outdoors, and for most smart-home gear. If your router shows one combined network name, it picks for you automatically.</p>
+      </details>
+      <details>
+        <summary>Why does my WiFi show two network names?</summary>
+        <p>Your router is broadcasting its two radios — 2.4 GHz and 5 GHz — as separate networks, often with names ending in -2G and -5G. Both reach the same internet connection. Newer routers merge them into a single name and steer each device to the better band on their own.</p>
+      </details>
+      <details>
+        <summary>Is a WiFi 6 router worth upgrading to?</summary>
+        <p>If your router is WiFi 4 or older, or you have a busy household with lots of phones, TVs, and smart devices, yes — WiFi 6 handles many devices at once far better. If you already own a solid WiFi 5 router and your speeds feel fine, the upgrade can usually wait.</p>
+      </details>
+      <details>
+        <summary>Do I need a WiFi 7 router?</summary>
+        <p>For most homes, not yet. WiFi 7's headline speeds outrun what most devices and most internet plans can use today. Buy WiFi 7 when you are replacing a router anyway and the price difference is small — not as a fix for slow internet.</p>
+      </details>
+      <details>
+        <summary>Will a new router make my internet faster?</summary>
+        <p>Only if the router — not your internet plan — is the bottleneck. A new router fixes weak signal in far rooms and congestion from many devices, but it cannot make a 50 Mbps plan deliver more than 50 Mbps. Run a speed test next to the router first: if it matches your plan there but not elsewhere, the router or its placement is the problem.</p>
+      </details>
+    </div>
+
+    <div class="cta">
+      <h2>Not sure what's slowing you down?</h2>
+      <p>Tell us what you're seeing. We'll tell you straight whether it's the WiFi, the plan, or the placement — including when the fix costs nothing.</p>
+      <a class='btn' href='/#contact'>Check Availability</a>
+    </div>
+  </div>
+</article>
+
+<div class="more">
+  <div class="container">
+    <h3>More from the blog</h3>
+    <a href='/why-is-my-internet-slow'>Why Is My Internet Slow? 5 Things to Check Before You Call →</a>
+    <a href='/how-much-internet-speed-do-you-need'>How Much Internet Speed Does Your Family Actually Need? →</a>
+    <a href='/fixed-wireless-vs-satellite-vs-starlink'>Fixed Wireless vs. Satellite vs. Starlink →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="container">© 2026 Wifi Squared · <a href='/'>wifisquared.com</a> · <a href="https://wifi2.unmsapp.com/crm/login" target="_blank" rel="noopener">Customer Login</a> · <a class="ml-onclick-form" href="javascript:void(0)" data-ml-form="BFZAK8">Get email updates</a> · <a href="https://stats.uptimerobot.com/rnoqpirZqN" target="_blank" rel="noopener">Network Status</a> · <a href='/contact'>Contact Us</a> · Site by <a href="https://smokymountainwebco.com">Smoky Mountain Web Co.</a></div>
+</footer>
+
+<!-- [12] E-NEWSLETTER — MailerLite Universal (account 2535272).
+     Mirrors the block at the bottom of index.html so the pop-up and the
+     "Get email updates" footer link work on blog posts too. -->
+<!-- MailerLite Universal -->
+<script>
+(function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+.push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+ml('account', '2535272');
+</script>
+<!-- End MailerLite Universal -->
+<script>
+/* Manual pop-up trigger — see the matching block in index.html. Bound here
+   instead of via inline onclick so Netlify's HTML post-processing can't mangle
+   the quoting inside a handler attribute. */
+document.addEventListener('click',function(e){
+  const t=e.target&&e.target.closest&&e.target.closest('[data-ml-form]');
+  if(!t)return;
+  e.preventDefault();
+  if(window.ml)ml('show',t.dataset.mlForm,true);
+});
+</script>
+</body>
+</html>
