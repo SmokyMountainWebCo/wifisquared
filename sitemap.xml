@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Hand-maintained: this is a static site with no build step, so add a <url>
+     entry when adding a page, and bump <lastmod> on meaningful edits. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://wifisquared.com/</loc><lastmod>2026-09-02</lastmod></url>
+  <url><loc>https://wifisquared.com/2-4-ghz-vs-5-ghz-wifi-5-6-7</loc><lastmod>2026-09-02</lastmod></url>
+  <url><loc>https://wifisquared.com/fixed-wireless-vs-satellite-vs-starlink</loc><lastmod>2026-09-02</lastmod></url>
+  <url><loc>https://wifisquared.com/how-much-internet-speed-do-you-need</loc><lastmod>2026-09-02</lastmod></url>
+  <url><loc>https://wifisquared.com/why-is-my-internet-slow</loc><lastmod>2026-09-02</lastmod></url>
+  <url><loc>https://wifisquared.com/contact</loc></url>
+  <url><loc>https://wifisquared.com/mobile-coverage</loc></url>
+  <url><loc>https://wifisquared.com/network-management-practices</loc></url>
+  <url><loc>https://wifisquared.com/privacy</loc></url>
+  <url><loc>https://wifisquared.com/terms</loc></url>
+  <url><loc>https://wifisquared.com/broadband-labels/</loc></url>
+  <url><loc>https://wifisquared.com/broadband-labels/essential-connect</loc></url>
+  <url><loc>https://wifisquared.com/broadband-labels/standard-connect</loc></url>
+  <url><loc>https://wifisquared.com/broadband-labels/performance-connect</loc></url>
+  <url><loc>https://wifisquared.com/broadband-labels/ultra-connect</loc></url>
+  <url><loc>https://wifisquared.com/broadband-labels/fiber-connect</loc></url>
+  <url><loc>https://wifisquared.com/broadband-labels/mobile-connect</loc></url>
+</urlset>
