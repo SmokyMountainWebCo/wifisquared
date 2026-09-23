@@ -83,7 +83,7 @@ footer a{color:var(--amber)}
 <nav class="nav">
   <div class="nav-in">
     <a class='logo' href='/'>Wifi<span class="sq">²</span></a>
-    <a class='back' href='/'>\u2190 Back to site</a>
+    <a class='back' href='/'>← Back to site</a>
   </div>
 </nav>
 <article>
@@ -107,7 +107,7 @@ footer a{color:var(--amber)}
         <div class="card b-hours">
           <h2>Hours</h2>
           <h3>Sales Hours</h3>
-          <p>Monday\u2013Friday<br>8:30 AM \u2013 5:00 PM Eastern</p>
+          <p>Monday–Friday<br>8:30 AM – 5:00 PM Eastern</p>
           <h3 style="margin-top:14px">Customer Support</h3>
           <p>Call or text us anytime. Text messages are preferred before 9:00 AM, after 5:00 PM, and on weekends. Messages received outside regular business hours will be answered as soon as possible.</p>
         </div>
@@ -130,7 +130,7 @@ footer a{color:var(--amber)}
           <a href="tel:8653664006" style="font-weight:600;text-decoration:underline">865-366-4006</a>.
         </div>
         <form id="contact-form" action="https://formspree.io/f/mqerrzgd" method="POST">
-          <input type="hidden" name="_subject" value="New contact form message \u2014 wifisquared.com">
+          <input type="hidden" name="_subject" value="New contact form message — wifisquared.com">
           <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none">
           <div class="fgrid">
             <div>
@@ -144,7 +144,7 @@ footer a{color:var(--amber)}
             <div class="full">
               <label for="c-reason">How may we help you? <span class="req">*</span></label>
               <select id="c-reason" name="reason" required>
-                <option value="">Please choose\u2026</option>
+                <option value="">Please choose…</option>
                 <option>New Internet Service / Availability</option>
                 <option>Existing Customer Support</option>
                 <option>Billing or Account Question</option>
@@ -172,7 +172,7 @@ footer a{color:var(--amber)}
             <div class="full">
               <fieldset>
                 <legend>Service Address, City, State, ZIP <span class="req" id="addr-star" hidden>*</span></legend>
-                <p class="addr-hint" id="addr-hint">Please include street, city, state, and ZIP \u2014 required if you're checking availability for new service.</p>
+                <p class="addr-hint" id="addr-hint">Please include street, city, state, and ZIP — required if you're checking availability for new service.</p>
                 <div class="fgrid">
                   <div class="full">
                     <label for="c-addr">Street address</label>
@@ -216,11 +216,11 @@ footer a{color:var(--amber)}
   </div>
 </article>
 <footer>
-  <div class="container">\u00a9 2026 Wifi Squared, LLC \u00b7 <a href='/'>wifisquared.com</a> \u00b7 <a href="https://wifi2.unmsapp.com/crm/login" target="_blank" rel="noopener">Customer Login</a> \u00b7
-    <a class="ml-onclick-form" href="javascript:void(0)" data-ml-form="BFZAK8">Get email updates</a> \u00b7
-    <a href="https://stats.uptimerobot.com/rnoqpirZqN" target="_blank" rel="noopener">Network Status</a> \u00b7
-    <a href='/privacy'>Privacy</a> \u00b7 <a href='/terms'>Terms</a> \u00b7
-    <a href='/network-management-practices'>Network Management</a> \u00b7
+  <div class="container">© 2026 Wifi Squared, LLC · <a href='/'>wifisquared.com</a> · <a href="https://wifi2.unmsapp.com/crm/login" target="_blank" rel="noopener">Customer Login</a> ·
+    <a class="ml-onclick-form" href="javascript:void(0)" data-ml-form="BFZAK8">Get email updates</a> ·
+    <a href="https://stats.uptimerobot.com/rnoqpirZqN" target="_blank" rel="noopener">Network Status</a> ·
+    <a href='/privacy'>Privacy</a> · <a href='/terms'>Terms</a> ·
+    <a href='/network-management-practices'>Network Management</a> ·
     Site by <a href="https://smokymountainwebco.com">Smoky Mountain Web Co.</a></div>
 </footer>
 <script>
@@ -235,8 +235,8 @@ footer a{color:var(--amber)}
       if(!need)f.classList.remove('invalid'); });
     star.hidden=!need;
     hint.textContent=need
-      ? 'Required \u2014 please include street address, city, state, and ZIP so we can check coverage.'
-      : 'Please include street, city, state, and ZIP \u2014 required if you are checking availability for new service.';
+      ? 'Required — please include street address, city, state, and ZIP so we can check coverage.'
+      : 'Please include street, city, state, and ZIP — required if you are checking availability for new service.';
   }
   reason.addEventListener('change',apply);
   apply();
@@ -253,7 +253,7 @@ footer a{color:var(--amber)}
     let firstBad=null;
     form.querySelectorAll('[required]').forEach(f=>{
       const v=(f.value||'').trim();
-      const bad=!v||(f.type==='email'&&!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(v));
+      const bad=!v||(f.type==='email'&&!/[^\s@]+@[^\s@]+\.[^\s@]+/.test(v));
       f.classList.toggle('invalid',bad);
       if(bad&&!firstBad)firstBad=f;
     });
@@ -266,7 +266,7 @@ footer a{color:var(--amber)}
     ok.classList.remove('show'); err.classList.remove('show');
     if(!validate()){ err.classList.add('show'); return; }
     sending=true; submit.disabled=true;
-    const label=submit.textContent; submit.textContent='Sending\u2026';
+    const label=submit.textContent; submit.textContent='Sending…';
     fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
       .then(r=>{ if(!r.ok)throw new Error('bad status');
         form.reset(); apply();
