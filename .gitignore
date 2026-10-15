@@ -1,2 +1,6 @@
 # Local Netlify CLI state — created by deploys, not site content
 .netlify/
+
+# Client backup zips — internal/make-backup.sh rebuilds them from history,
+# so committing them would just duplicate the repo inside the repo.
+backups/
