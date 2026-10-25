@@ -1,0 +1,93 @@
+/* =========================================================
+   FALL SKIN — WiFi Squared (Smoky Mountain Web Co, Oct 2026)
+   Paint only: colors, heading font, corners, grain, warm light.
+   No content, layout, links, forms or scripts are changed.
+   To revert: delete the two "fall" lines before </head> in
+   index.html (Playfair font link + this stylesheet).
+   ========================================================= */
+:root{
+  --navy:#4A1A1F;      /* deep burgundy (was navy) */
+  --navy-2:#5E2329;    /* burgundy card-on-dark */
+  --sky:#A3401F;       /* terracotta, primary links/accents */
+  --sky-soft:#F5EADB;  /* beige tinted sections */
+  --amber:#E3A72F;     /* mustard CTA / highlight */
+  --ink:#2E211B;       /* warm near-black body text */
+  --mute:#6A5547;      /* warm gray-brown secondary text */
+  --line:#E4D5C1;      /* warm gray rule */
+  --white:#FFFBF4;     /* cream */
+  --radius:22px;
+  --shadow:0 12px 32px rgba(74,26,31,.12);
+  --fall-orange:#C8641E;  /* burnt orange, decorative only */
+  --fall-serif:'Playfair Display',Georgia,'Times New Roman',serif;
+}
+html{background:#FAF3E7}
+
+/* warm cream page with a faint golden-hour wash */
+body{background:
+  radial-gradient(1200px 600px at 100% 0,rgba(227,167,47,.10),transparent 70%),
+  linear-gradient(180deg,#FFFBF4 0%,#FAF3E7 100%)}
+
+/* soft film grain — static, click-through, barely there */
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:2147483000;opacity:.07;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35  0 0 0 0 .22  0 0 0 0 .12  0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+@media print{body::after{display:none}}
+
+/* warm classic serif for headings; body stays Inter */
+h1,h2,h3,h4,.plan h3,.plan-cat h3{font-family:var(--fall-serif);letter-spacing:0;font-weight:700}
+.hero h1{line-height:1.12}
+
+/* nav + wordmark */
+.nav{background:rgba(74,26,31,.94);border-bottom-color:rgba(255,236,210,.10)}
+.wordmark{color:#F3DDBF}
+@media(max-width:860px){.nav-links{background:var(--navy)}}
+
+/* hero: burgundy dusk with a golden-hour glow from the upper right */
+.hero-bg{background:
+  radial-gradient(ellipse 70% 90% at 92% 8%,rgba(227,150,52,.42),transparent 62%),
+  linear-gradient(100deg,rgba(58,18,22,.95) 30%,rgba(74,26,31,.62) 70%,rgba(110,40,30,.40)),
+  linear-gradient(160deg,#3A1216,#5E2329 60%,#8A3A22)}
+.hero-bg img{opacity:.34}
+.hero .eyebrow{color:#E3A72F}
+.chip{background:rgba(255,240,220,.10);border-color:rgba(255,240,220,.20)}
+
+/* dark bands */
+.stats{border-top-color:rgba(255,236,210,.10)}
+body>footer{background:#331216}
+body>footer .foot-bottom{border-top-color:rgba(255,236,210,.12)}
+
+/* tinted sections get a soft organic glow, not a flat block */
+.tint{background:
+  radial-gradient(600px 320px at 8% 12%,rgba(200,100,30,.08),transparent 70%),
+  radial-gradient(520px 300px at 95% 90%,rgba(227,167,47,.12),transparent 70%),
+  var(--sky-soft)}
+
+/* image placeholders */
+.card-img,.cov-img{background:linear-gradient(140deg,#5E2329,#C8641E)}
+
+/* softer, slightly asymmetrical corners (organic, not rigid) */
+.card,.prob,.review,.plan,.step,.faq details{border-radius:26px 12px 26px 12px}
+.cards>:nth-child(even),.probs>:nth-child(even),.reviews>:nth-child(even),.plans>:nth-child(even),.steps>:nth-child(even){border-radius:12px 26px 12px 26px}
+.avail-card,.form-card{border-radius:30px 14px 30px 14px}
+.cov-img{border-radius:44px 14px 44px 14px}
+.biz-note,.fee-callout,.review.wide{border-radius:24px 12px 24px 12px}
+.fee-callout{background:#FFF3DC}
+.prob .ico{border-radius:16px 8px 16px 8px}
+.btn{border-radius:999px}
+.nav-links .nav-login{border-radius:999px}
+.avail-card input,.form-card input,.form-card select,.form-card textarea{border-radius:14px;background:#FFFEFB}
+.form-msg{border-radius:14px}
+@media(max-width:860px){.nav-contact a{border-radius:999px}}
+
+/* the business-note rule (.biz-note a) tinted this dark button's label; keep it cream so it reads */
+.biz-note .btn-navy{color:var(--white)}
+
+/* hover shadows in warm tones */
+.btn-amber:hover{box-shadow:0 8px 20px rgba(227,167,47,.38)}
+.btn-navy:hover{box-shadow:0 8px 20px rgba(74,26,31,.30)}
+
+/* focus rings: terracotta on light surfaces (6:1), mustard kept on dark bands */
+.btn:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline-color:#A3401F}
+.nav :focus-visible,.hero :focus-visible,.stats :focus-visible,.contact :focus-visible,body>footer :focus-visible,.step :focus-visible{outline-color:#E3A72F}
+.hero .avail-card :focus-visible,.contact .form-card :focus-visible{outline-color:#A3401F}
+
+/* no new motion is added; existing reduced-motion rules still apply */
