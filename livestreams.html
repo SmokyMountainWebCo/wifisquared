@@ -95,6 +95,17 @@ footer a{color:var(--amber)}
 footer{background:#331216}
 .logo .sq{color:var(--amber)}
 .btn{border-radius:999px}
+/* Top bar on phones: the bar scrolls away with the page instead of sticking at top:0,
+   so it can't sit over the title (iOS Safari lets content show above a sticky bar under
+   the status bar). Also keep everything inside the screen width. */
+html,body{max-width:100%;overflow-x:clip}
+.frame iframe{max-width:100%}
+.nav-in>a{white-space:nowrap}
+.nav a.back{flex-shrink:0;padding-left:16px}
+@media(max-width:760px){
+  .nav{position:relative}
+  .nav-in{height:60px;padding:0 18px}
+}
 </style>
 </head>
 <body>
