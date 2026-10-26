@@ -81,6 +81,14 @@ footer a{color:#fff}
 .foot-links{margin:10px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px 20px}
 .updated{color:var(--mute);font-size:.88rem}
 @media (max-width:560px){.nav-back{display:none}}
+/* Top bar on phones: scrolls away with the page instead of sticking at top:0,
+   so it can't sit over the title; links never wrap and nothing spills sideways. */
+html,body{max-width:100%;overflow-x:clip}
+.nav-in>a{white-space:nowrap;flex-shrink:0}
+@media(max-width:760px){
+  .nav{position:relative}
+  img,video,iframe{max-width:100%}
+}
 </style>
 </head>
 <body>
