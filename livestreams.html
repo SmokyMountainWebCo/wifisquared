@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wifi Squared Livestreams</title>
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#4A1A1F">
+<meta name="description" content="Watch the East Tennessee mountains live this fall. Wifi Squared's live cameras look out over Wears Valley and Bluff Mountain, right as the leaves turn.">
+<link rel="canonical" href="https://wifisquared.com/livestreams">
+
+<!-- Share cards (Facebook, X, iMessage, etc.). The image is a real frame
+     from the Bluff Mountain camera, captured Oct 26 2026. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Wifi Squared">
+<meta property="og:title" content="Wifi Squared Livestreams">
+<meta property="og:description" content="Watch the East Tennessee mountains live this fall, from cameras over Wears Valley and Bluff Mountain.">
+<meta property="og:url" content="https://wifisquared.com/livestreams">
+<meta property="og:image" content="https://wifisquared.com/images/livestreams-og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Live camera view from Bluff Mountain: fall color in the foreground and blue ridgelines of the East Tennessee mountains behind.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Wifi Squared Livestreams">
+<meta name="twitter:description" content="Watch the East Tennessee mountains live this fall, from cameras over Wears Valley and Bluff Mountain.">
+<meta name="twitter:image" content="https://wifisquared.com/images/livestreams-og.jpg">
+<meta name="twitter:image:alt" content="Live camera view from Bluff Mountain: fall color in the foreground and blue ridgelines of the East Tennessee mountains behind.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://rtsp.me">
+
+<style>
+:root{--navy:#0A1F3C;--navy-2:#122B4F;--sky:#2E7CF6;--sky-soft:#EAF2FE;--amber:#F6A82C;--ink:#182234;--mute:#5B6B84;--line:#DCE5F2;--white:#FFFFFF;--radius:14px;--shadow:0 10px 30px rgba(10,31,60,.10);--display:'Space Grotesk',sans-serif;--body:'Inter',sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--ink);background:var(--white);line-height:1.7;font-size:16.5px}
+a{color:var(--sky);text-decoration:none}
+.container{max-width:760px;margin:0 auto;padding:0 22px}
+.wide{max-width:1140px;margin:0 auto;padding:0 22px}
+.nav{position:sticky;top:0;z-index:50;background:rgba(10,31,60,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:70px;max-width:1140px;margin:0 auto;padding:0 22px}
+.logo{font-family:var(--display);font-weight:700;font-size:1.35rem;color:var(--white)}
+.sq{color:var(--amber);font-weight:700}
+.logo .sq{font-size:1rem;vertical-align:super}
+.nav a.back{color:rgba(255,255,255,.85);font-size:.92rem;font-weight:500}
+.nav a.back:hover{color:#fff}
+.intro{padding:56px 0 8px}
+.crumb{font-size:.85rem;color:var(--mute);margin-bottom:22px}
+.crumb a{color:var(--mute)}
+.crumb a:hover{color:var(--sky)}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--display);font-weight:600;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sky);margin-bottom:10px}
+.dot{width:9px;height:9px;border-radius:50%;background:#D93A2B;box-shadow:0 0 0 0 rgba(217,58,43,.5);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(217,58,43,.5)}70%{box-shadow:0 0 0 9px rgba(217,58,43,0)}100%{box-shadow:0 0 0 0 rgba(217,58,43,0)}}
+@media(prefers-reduced-motion:reduce){.dot{animation:none}}
+h1{font-family:var(--display);font-size:clamp(2rem,4.6vw,2.9rem);line-height:1.12;letter-spacing:-.01em;margin-bottom:16px}
+h2{font-family:var(--display);font-size:1.4rem;margin:0 0 12px}
+p{margin-bottom:18px}
+p.lede{font-size:1.12rem;color:var(--mute)}
+.cams{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px;padding:28px 0 12px}
+.cam{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin:0}
+.cam.featured{grid-column:1/-1}
+.frame{position:relative;aspect-ratio:16/9;background:#140709}
+.frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+.cam figcaption{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px}
+.cam h3{font-size:1.12rem;line-height:1.3}
+.cam .live{font-family:var(--display);font-weight:600;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:#B8321F;padding:4px 10px;border-radius:999px;white-space:nowrap}
+.note{font-size:.88rem;color:var(--mute);padding:4px 0 8px}
+.share{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:22px 0 4px}
+.btn{display:inline-block;font-family:var(--display);font-weight:600;font-size:.95rem;padding:14px 26px;border-radius:10px;background:var(--amber);color:var(--navy);border:0;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--sky);border:1.5px solid var(--line);padding:12px 22px}
+.share-msg{font-size:.88rem;color:var(--mute)}
+.cta{background:var(--navy);color:#fff;border-radius:var(--radius);padding:32px;margin:44px 0 56px;text-align:center}
+.cta h2{margin-top:0;color:#fff}
+.cta p{color:rgba(255,255,255,.8)}
+footer{background:#071628;color:rgba(255,255,255,.6);padding:28px 0;font-size:.82rem;text-align:center}
+footer a{color:var(--amber)}
+@media(max-width:760px){
+  .cams{grid-template-columns:1fr;gap:20px}
+  .intro{padding-top:40px}
+  .cam figcaption{padding:12px 14px}
+}
+</style>
+<!-- Same fall skin as the homepage; delete this line to revert to the standard colors. -->
+<link rel="stylesheet" href="/fall.css">
+<style>
+/* fall.css targets homepage classes; mirror its look on this page's pieces */
+.cam{border-radius:26px 12px 26px 12px}
+.cams>.cam:nth-child(odd):not(.featured){border-radius:12px 26px 12px 26px}
+.cta{background:var(--navy);border-radius:30px 14px 30px 14px}
+footer{background:#331216}
+.logo .sq{color:var(--amber)}
+.btn{border-radius:999px}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class='logo' href='/'>Wifi<span class="sq">²</span></a>
+    <a class='back' href='/'>← Back to site</a>
+  </div>
+</nav>
+
+<section class="intro">
+  <div class="container">
+    <div class="crumb"><a href='/'>Home</a> / Livestreams</div>
+    <div class="eyebrow"><span class="dot" aria-hidden="true"></span>Live now</div>
+    <h1>Wifi Squared Livestreams</h1>
+    <p class="lede">Fall is when the East Tennessee mountains put on their best show. The ridgelines go gold, orange and red, and the valleys fill with color. Wherever you are, you can watch it happen live from our cameras over Wears Valley and Bluff Mountain.</p>
+    <p>Pull one up on your phone at lunch, put one on the big screen at home, or send a link to someone who misses the Smokies. Every camera is a live feed, so what you see changes with the light and the weather through the day.</p>
+  </div>
+</section>
+
+<section aria-label="Live cameras">
+  <div class="wide">
+    <div class="cams">
+      <figure class="cam featured">
+        <div class="frame">
+          <iframe src="https://rtsp.me/embed/3ANsQRTf/" title="Bluff Mountain live camera" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+        <figcaption><h3>Bluff Mountain</h3><span class="live">Live</span></figcaption>
+      </figure>
+      <figure class="cam">
+        <div class="frame">
+          <iframe src="https://rtsp.me/embed/nZG24ShB/" title="Wears Valley live camera" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+        <figcaption><h3>Wears Valley</h3><span class="live">Live</span></figcaption>
+      </figure>
+      <figure class="cam">
+        <div class="frame">
+          <iframe src="https://rtsp.me/embed/FfQkn452/" title="Wears Valley Sunset live camera" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+        <figcaption><h3>Wears Valley Sunset</h3><span class="live">Live</span></figcaption>
+      </figure>
+    </div>
+    <p class="note">Tap any camera to play it, or use the corner button to watch full screen.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="share">
+      <button class="btn ghost" type="button" id="shareBtn">Share these livestreams</button>
+      <span class="share-msg" id="shareMsg" role="status" aria-live="polite"></span>
+    </div>
+    <div class="cta">
+      <h2>Live in the mountains? Get online with a local provider.</h2>
+      <p>Wifi Squared brings internet to homes, cabins and businesses across these same hills.</p>
+      <a class='btn' href='/#contact'>Check Availability</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">© 2026 Wifi Squared · <a href='/'>wifisquared.com</a> · <a href="https://wifi2.unmsapp.com/crm/login" target="_blank" rel="noopener">Customer Login</a> · <a class="ml-onclick-form" href="javascript:void(0)" data-ml-form="BFZAK8">Get email updates</a> · <a href="https://stats.uptimerobot.com/rnoqpirZqN" target="_blank" rel="noopener">Network Status</a> · <a href='/contact'>Contact Us</a> · Site by <a href="https://smokymountainwebco.com">Smoky Mountain Web Co.</a></div>
+</footer>
+
+<script>
+/* Share button: native share sheet on phones, copy-link fallback elsewhere. */
+document.getElementById('shareBtn').addEventListener('click',async function(){
+  const url='https://wifisquared.com/livestreams', msg=document.getElementById('shareMsg');
+  const data={title:'Wifi Squared Livestreams',text:'Watch the East Tennessee mountains live this fall.',url:url};
+  try{
+    if(navigator.share){await navigator.share(data);return}
+    await navigator.clipboard.writeText(url);msg.textContent='Link copied.';
+  }catch(e){ if(e&&e.name!=='AbortError'){msg.textContent=url} }
+});
+</script>
+<!-- MailerLite Universal (mirrors the other pages so "Get email updates" works here too) -->
+<script>
+(function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+.push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+ml('account', '2535272');
+</script>
+<script>
+document.addEventListener('click',function(e){
+  const t=e.target&&e.target.closest&&e.target.closest('[data-ml-form]');
+  if(!t)return;
+  e.preventDefault();
+  if(window.ml)ml('show',t.dataset.mlForm,true);
+});
+</script>
+</body>
+</html>
