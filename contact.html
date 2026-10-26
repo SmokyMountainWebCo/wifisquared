@@ -77,6 +77,19 @@ footer a{color:var(--amber)}
   .info .b-mail{order:4}
   .fgrid{grid-template-columns:1fr}
 }
+/* Top bar on phones (same fix as /livestreams): the bar scrolls away with the page
+   instead of sticking at top:0, so it can't sit over the title. Nav links never wrap
+   or get squeezed, and everything stays inside the screen width. */
+html,body{max-width:100%;overflow-x:clip}
+.nav-in>a{white-space:nowrap}
+.nav a.back{flex-shrink:0}
+@media(max-width:760px){
+  .nav{position:relative}
+  .nav-in{height:60px;padding:0 18px}
+  .nav a.back{padding-left:16px}
+  img,video,iframe{max-width:100%}
+  article a{overflow-wrap:anywhere}
+}
 </style>
 </head>
 <body>

@@ -532,6 +532,19 @@ footer{background:#071628;color:rgba(255,255,255,.7);padding:48px 0 28px;font-si
   .plan{padding:28px 22px}
   body{font-size:16px}
 }
+
+/* --- top bar on phones (same fix as /livestreams) ---
+   At phone widths the bar scrolls away with the page instead of sticking at
+   top:0, so it can't sit over the hero heading. The menu drawer hangs off the
+   bar (absolute, not fixed) so it still opens right under the ☰ button. */
+html,body{max-width:100%;overflow-x:clip}
+.nav-links .nav-login,.nav-phone,.nav-cta{white-space:nowrap}
+.logo,.nav-toggle{flex-shrink:0}
+@media(max-width:760px){
+  .nav{position:relative}
+  .nav-links{position:absolute}
+  img,video,iframe{max-width:100%}
+}
 </style>
 <!-- STRUCTURED DATA — [8] EDIT SCHEMA: phone, email, URL, and areaServed use the
      same placeholders as the visible site. Update them together before launch. -->
